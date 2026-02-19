@@ -1,20 +1,17 @@
 import { defineComponent } from "vue";
-import ShowPreviewCard from "../show-preview-card/show-preview-card.vue";
+import { TVMazeItem } from "@/models/tv-maze";
 import SetupComponentPresenter from "@/presenters/setup-component-presenter";
-import GenreShowcaseCode from "./genre-showcase.code";
+import ShowPreviewCardCode from "./show-preview-card.code";
 
 export default defineComponent({
-	components: {
-		ShowPreviewCard
-	},
 	props: {
-		genreName: {
-			type: String,
+		show: {
+			type: Object,
 			required: true
 		}
 	},
 	setup: (props) => {
-		const code = new GenreShowcaseCode(props.genreName);
+		const code = new ShowPreviewCardCode(props.show as TVMazeItem);
 
 		return SetupComponentPresenter.setupComponent(code);
 	}

@@ -18,7 +18,6 @@ const mutations: Mutations = {
 				state.genreCluster[genre].push(show);
 			});
 		});
-		console.log(state.genreCluster);
 	},
 	setCurrentRoute: (name, id) => {
 		state.router.props.id = id ? id : 0;
