@@ -1,0 +1,20 @@
+.SearchContainer {
+	display: inline-block;
+	border: 1px solid #000;
+	border-radius: 1rem;
+
+	.UserSearchWrapper {
+		position: relative;
+		width: 60%;
+	}
+
+	.SearchIcon {
+		font-size: 1rem;
+	}
+
+	.SearchInput {
+		background: transparent;
+		border: none;
+		outline: none;
+	}
+}

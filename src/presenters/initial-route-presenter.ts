@@ -1,7 +1,7 @@
-import { Routes } from "@/models/router/router";
+import { Routes } from "@/models/router";
 import store from "@/store";
 
-class InitialRoutePresenter {
+export default class InitialRoutePresenter {
 	private static githubApplicationName = import.meta.env.VITE_APP_URL_SEPARATOR;
 
 	private static get defaultRoute(): Routes {
@@ -64,5 +64,3 @@ class InitialRoutePresenter {
 		);
 	}
 }
-
-export default InitialRoutePresenter;
