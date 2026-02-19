@@ -1,6 +1,6 @@
 import { reactive } from "vue";
-import { Routes } from "@/models/router/router";
-import { State } from "@/models/store/store";
+import { Routes } from "@/models/router";
+import { State } from "@/models/store";
 
 const state: State = reactive({
 	router: {

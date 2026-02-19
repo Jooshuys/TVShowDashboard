@@ -1,5 +1,5 @@
 import state from "./state";
-import { Getters } from "@/models/store/store";
+import { Getters } from "@/models/store";
 
 const getters: Getters = {
 	router: () => state.router

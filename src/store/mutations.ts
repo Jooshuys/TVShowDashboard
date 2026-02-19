@@ -1,4 +1,4 @@
-import { Mutations } from "@/models/store/store";
+import { Mutations } from "@/models/store";
 import state from "./state";
 
 const mutations: Mutations = {

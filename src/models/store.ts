@@ -1,4 +1,4 @@
-import { Router, Routes } from "@/models/router/router"
+import { Router, Routes } from "@/models/router"
 
 type Getters = {
 	router: () => Router
