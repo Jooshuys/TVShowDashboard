@@ -1,9 +1,14 @@
-interface TVMazeSearchItem {
-	score: number;
-	show: {
-		id: number;
-		name: string;
-	};
+type TVMazeItem = {
+	id: number;
+	name: string;
+	genres: string[];
 }
 
-export { TVMazeSearchItem };
+type TVMazeSearchItem = {
+	score: number;
+	show: TVMazeItem;
+}
+
+type TVMazeGenreCluster = Record<string, TVMazeItem[]>;
+
+export { TVMazeItem, TVMazeSearchItem, TVMazeGenreCluster };

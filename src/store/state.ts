@@ -3,6 +3,7 @@ import { Routes } from "@/models/router";
 import { State } from "@/models/store";
 
 const state: State = reactive({
+	genreCluster: {},
 	router: {
 		current: Routes.OVERVIEW,
 		props: {
