@@ -1,7 +1,23 @@
 type TVMazeItem = {
-	id: number;
-	name: string;
 	genres: string[];
+	id: number;
+	image: {
+		medium: string;
+		original: string;
+	} | null;
+	language: string;
+	name: string;
+	network: {
+		name: string;
+		country: {
+			name: string;
+		};
+	} | null;
+	premiered: string;
+	rating: {
+		average: number | null;
+	};
+	summary: string;
 }
 
 type TVMazeSearchItem = {

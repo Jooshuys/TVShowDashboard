@@ -5,8 +5,8 @@ import store from "@/store";
 export default class TVMazeService {
 	public static async retrieveShowsThatMatchName(query: string): Promise<SearchResult[]> {
 		const response = await fetch(`https://api.tvmaze.com/search/shows?q=${query}`);
-		const result: TVMazeSearchItem[] = await response.json();
-		return result
+		const items: TVMazeSearchItem[] = await response.json();
+		return items
 			.map(item => ({
 				id: item.show.id,
 				name: item.show.name,
@@ -18,8 +18,9 @@ export default class TVMazeService {
 		let combinedResults: TVMazeItem[] = [];
 		for (let i = pageStart; i < pageStart + amountOfPages; i++) {
 			const response = await fetch(`https://api.tvmaze.com/shows?page=${i}`);
-			const result: TVMazeItem[] = await response.json();
-			combinedResults = combinedResults.concat(result);
+			const shows: TVMazeItem[] = await response.json();
+			const showsWithImages = shows.filter((show) => show.image !== null);
+			combinedResults = combinedResults.concat(showsWithImages);
 		}
 		store.mutations.addShowsToGenreCluster(combinedResults);
 	}
