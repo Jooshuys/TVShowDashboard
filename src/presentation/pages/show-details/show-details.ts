@@ -1,16 +1,11 @@
-import { computed } from "vue";
 import { defineComponent } from "vue";
-import store from "@/store";
+import SetupComponentPresenter from "@/presenters/setup-component-presenter";
+import ShowDetailsCode from "./show-details.code";
 
 export default defineComponent({
 	setup: () => {
-		// TODO: Move this into the right component(s);
-		const showForCurrentRoute = computed(() => store.getters.showForCurrentRoute());
-		const genreClusterHasShows = computed(() => store.getters.genreClusterHasShows())
+		const code = new ShowDetailsCode();
 
-		return {
-			showForCurrentRoute,
-			genreClusterHasShows
-		};
+		return SetupComponentPresenter.setupComponent(code);
 	}
 });

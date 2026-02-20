@@ -17,6 +17,8 @@ type TVMazeItem = {
 	rating: {
 		average: number | null;
 	};
+	runtime: number | null;
+	averageRuntime: number | null;
 	summary: string;
 }
 
