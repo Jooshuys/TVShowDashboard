@@ -1,7 +1,8 @@
 <template>
 	<a
-		:href="`./show-details/${show.id}`"
+		:href="`/show-details/${show.id}`"
 		class="ShowCardLink"
+		@click="handleNavigationItemClick"
 	>
 		<article class="ShowCard">
 			<div class="ShowCardImageWrapper">

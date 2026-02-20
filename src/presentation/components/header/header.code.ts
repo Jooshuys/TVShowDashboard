@@ -1,12 +1,7 @@
-import { TVMazeItem } from "@/models/tv-maze";
 import RoutePresenter from "@/presenters/route-presenter";
 
-export default class ShowPreviewCardCode {
+export default class HeaderCode {
 	
-	constructor(
-		public show: TVMazeItem
-	) { }
-
 	public handleNavigationItemClick(event: PointerEvent) {
 		RoutePresenter.handleNavigationItemClick(event);
 	}

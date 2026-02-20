@@ -2,7 +2,7 @@ import { Component, computed } from "vue";
 import { RoutesCluster, Routes, Router } from "@/models/router";
 import Overview from "@/presentation/pages/overview/overview.vue";
 import ShowDetails from "@/presentation/pages/show-details/show-details.vue";
-import InitialRoutePresenter from "@/presenters/initial-route-presenter";
+import InitialRoutePresenter from "@/presenters/route-presenter";
 import TVMazeService from "@/services/tv-maze-service";
 import store from "@/store";
 

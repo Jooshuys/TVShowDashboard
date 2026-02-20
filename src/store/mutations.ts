@@ -1,4 +1,5 @@
 import { Mutations } from "@/models/store";
+import RoutePresenter from "@/presenters/route-presenter";
 import state from "./state";
 
 const mutations: Mutations = {
@@ -27,9 +28,13 @@ const mutations: Mutations = {
 			state.genreCluster[genre] = sortedItems;
 		}
 	},
-	setCurrentRoute: (name, id) => {
+	navigateToRoute: (url) => {
+		debugger;
+		const routeName = RoutePresenter.retrieveRouteNameFromUrl(url);
+		const id = RoutePresenter.retrieveIdFromUrl(url);
 		state.router.props.id = id ? id : 0;
-		state.router.current = name;
+		state.router.current = routeName;
+		history.pushState({}, '', url);
 	}
 };
 
