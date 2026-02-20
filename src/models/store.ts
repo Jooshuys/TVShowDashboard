@@ -1,4 +1,4 @@
-import { Router, Routes } from "@/models/router"
+import { Router } from "@/models/router"
 import { TVMazeItem, TVMazeGenreCluster } from "@/models/tv-maze";
 
 type Getters = {

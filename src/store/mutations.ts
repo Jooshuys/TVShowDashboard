@@ -29,7 +29,6 @@ const mutations: Mutations = {
 		}
 	},
 	navigateToRoute: (url) => {
-		debugger;
 		const routeName = RoutePresenter.retrieveRouteNameFromUrl(url);
 		const id = RoutePresenter.retrieveIdFromUrl(url);
 		state.router.props.id = id ? id : 0;
