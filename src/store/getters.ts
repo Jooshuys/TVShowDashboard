@@ -12,6 +12,17 @@ const getters: Getters = {
 			return listB.length - listA.length;
 		});
 	},
+	showForCurrentRoute: () => {
+		// TODO: Figure out why this doesn't reactively update.
+		for (const items of Object.values(state.genreCluster)) {
+			const relevantItem = items.find(item => item.id === state.router.props.id);
+			if (!relevantItem) {
+				continue;
+			}
+
+			return relevantItem;
+		}
+	},
 	showsOfGenre: (genre) => {
 		const showsOfGenre = state.genreCluster[genre];
 		return showsOfGenre ?? [];

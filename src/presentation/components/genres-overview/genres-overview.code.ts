@@ -1,5 +1,4 @@
 import { computed } from "vue";
-import TVMazeService from "@/services/tv-maze-service";
 import store from "@/store";
 
 export default class GenreOverviewCode {
@@ -9,16 +8,7 @@ export default class GenreOverviewCode {
 		const genresOrderedBySize = store.getters.genresOrderedBySize();
 		return genresOrderedBySize.slice(0, this.amountOfGenresToShow);
 	});
-
-	private genreClusterHasShows = computed((): boolean => {
-		return store.getters.genreClusterHasShows();
-	});
-
-	public mounted(): void {
-		if (this.genreClusterHasShows.value) {
-			return;
-		}
-
-		void TVMazeService.retrieveShowsForGenreCluster(0);
-	}
 }
+
+// TODO: Show more genres when at bottom of page.
+// TODO: Fetch more shows when near end of one genre.

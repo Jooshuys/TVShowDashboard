@@ -4,6 +4,7 @@ import { TVMazeItem, TVMazeGenreCluster } from "@/models/tv-maze";
 type Getters = {
 	genreClusterHasShows: () => boolean,
 	genresOrderedBySize: () => string[],
+	showForCurrentRoute: () => TVMazeItem | undefined,
 	showsOfGenre: (genre: string) => TVMazeItem[],
 	router: () => Router
 }
