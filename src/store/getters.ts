@@ -25,7 +25,7 @@ const getters: Getters = {
 	},
 	showsOfGenre: (genre) => {
 		const showsOfGenre = state.genreCluster[genre];
-		return showsOfGenre ?? [];
+		return showsOfGenre?.slice(0, 30) ?? [];
 	},
 	router: () => state.router
 }
