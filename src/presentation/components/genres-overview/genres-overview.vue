@@ -5,6 +5,7 @@
 			:key="genre"
 			:genreName="genre"
 		/>
+		<div ref="bottomMarker"></div>
 	</div>
 </template>
 
