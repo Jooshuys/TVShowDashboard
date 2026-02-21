@@ -35,8 +35,12 @@ const mutations: Mutations = {
 	navigateToRoute: (url) => {
 		const routeName = RoutePresenter.retrieveRouteNameFromUrl(url);
 		const id = RoutePresenter.retrieveIdFromUrl(url);
-		state.router.props.id = id ? id : 0;
-		state.router.current = routeName;
+		state.router = {
+			current: routeName,
+			props: {
+				id: id ? id : 0
+			}
+		};
 		history.pushState({}, '', url);
 	},
 	updateLoadingStatusOfType: (type, status) => {

@@ -55,7 +55,7 @@ export default class ShowDetailsCode {
 		this.stopRouterWatcher = watch(
 			this.router,
 			(newValue, oldValue) => {
-				if (!oldValue.props.id || newValue.props.id) {
+				if (oldValue.props.id === newValue.props.id) {
 					return;
 				}
 
