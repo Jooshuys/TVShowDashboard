@@ -1,7 +1,6 @@
 import { Mutations } from "@/models/store";
 import RoutePresenter from "@/presenters/route-presenter";
 import state from "./state";
-import { LoadingStatuses, LoadingTypes } from "@/models/loading";
 
 const mutations: Mutations = {
 	addShowsToGenreCluster: (shows) => {
