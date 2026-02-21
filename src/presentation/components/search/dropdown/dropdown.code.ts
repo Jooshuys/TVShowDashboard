@@ -1,6 +1,6 @@
 import { computed, Ref } from "vue";
 import { DEFAULT_SEARCH_RESULTS_COUNT, DEFAULT_SEARCH_RESULT } from "@/static/defaults";
-import { LoadingTypes, LoadingStatuses } from "@/models/loading";
+import { LoadingTypes, LoadingStatuses, LoadingProcess } from "@/models/loading";
 import { SearchResult } from "@/models/search";
 import { Emits } from "@/models/emits";
 import store from "@/store";
@@ -14,8 +14,15 @@ export default class DropdownCode {
 	) { }
 
 	public isLoading = computed((): boolean => {
-		const loadingProcess = store.getters.loadingProcessOfType(LoadingTypes.SEARCH);
-		return loadingProcess?.status === LoadingStatuses.ACTIVE;
+		return this.loadingProcess.value?.status === LoadingStatuses.ACTIVE;
+	});
+
+	public isLoadingFailure = computed((): boolean => {
+		return this.loadingProcess.value?.status === LoadingStatuses.ERROR;
+	});
+
+	private loadingProcess = computed((): LoadingProcess | undefined => {
+		return store.getters.loadingProcessOfType(LoadingTypes.SEARCH);
 	});
 
 	public shows = computed((): SearchResult[] => {

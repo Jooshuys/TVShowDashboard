@@ -1,10 +1,16 @@
 <template>
 	<div class="DropdownContainer">
 		<p
-			v-if="!shows.length && searchTerm"
-			class="NotFoundContainer"
+			v-if="isLoadingFailure"
+			class="SearchFailedMessage"
 		>
-			No results found. Try adjusting your search.
+			Something went wrong. Please refresh the page.
+		</p>
+		<p
+			v-else-if="!shows.length && searchTerm"
+			class="NotFoundMessage"
+		>
+			No results found. Please adjust your search.
 		</p>
 		<template
 			v-for="(show, index) in shows"

@@ -1,6 +1,7 @@
 <template>
 	<div>
-		<GenresOverview />
+		<loadingFailureNotification v-if="isLoadingFailure" />
+		<GenresOverview v-else />
 	</div>
 </template>
 

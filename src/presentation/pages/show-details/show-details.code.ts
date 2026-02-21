@@ -1,7 +1,7 @@
 import { computed, watch, WatchStopHandle } from "vue";
 import { TVMazeItem } from "@/models/tv-maze";
 import { Router } from "@/models/router";
-import { LoadingStatuses, LoadingTypes } from "@/models/loading";
+import { LoadingProcess, LoadingStatuses, LoadingTypes } from "@/models/loading";
 import tvMazeService from "@/services/tv-maze-service";
 import store from "@/store";
 
@@ -10,32 +10,23 @@ export default class ShowDetailsCode {
 	private stopRouterWatcher: WatchStopHandle | null = null;
 
 	public isLoading = computed((): boolean => {
-		const loadingProcess = store.getters.loadingProcessOfType(LoadingTypes.GENRE_CLUSTER);
-		return loadingProcess?.status === LoadingStatuses.ACTIVE;
+		return this.loadingProcess.value?.status === LoadingStatuses.ACTIVE;
 	});
 
-	public genreClusterHasShows = computed((): boolean => {
-		return store.getters.genreClusterHasShows();
+	public isLoadingFailure = computed((): boolean => {
+		return this.loadingProcess.value?.status === LoadingStatuses.ERROR;
 	});
 
-	public showForCurrentRoute = computed((): TVMazeItem | undefined => {
-		return store.getters.showForCurrentRoute();
+	public loadingProcess = computed((): LoadingProcess | undefined => {
+		return store.getters.loadingProcessOfType(LoadingTypes.GENRE_CLUSTER);
 	});
 
-	public show = computed((): TVMazeItem | undefined => {
+	private showForCurrentRoute = computed((): TVMazeItem | undefined => {
 		return store.getters.showForCurrentRoute();
 	});
 
 	private router = computed((): Router => {
 		return store.getters.router();
-	});
-
-	public showGenresCommaSeparated = computed((): string => {
-		if (!this.show.value) {
-			return '';
-		}
-
-		return this.show.value.genres.join(', ');
 	});
 
 	public mounted(): void {
@@ -77,7 +68,7 @@ export default class ShowDetailsCode {
 	}
 
 	public async checkIfShowNeedsToBeRetrieved(): Promise<void> {
-		if (this.showForCurrentRoute.value || this.isLoading.value) {
+		if (this.showForCurrentRoute.value || this.isLoading.value || this.isLoadingFailure.value) {
 			return;
 		}
 
