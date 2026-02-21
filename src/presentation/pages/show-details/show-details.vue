@@ -46,7 +46,7 @@
 							<label class="SpotlightLabel">
 								Year:
 							</label>
-							{{ show.premiered.substr(0, 4) }}
+							{{ show.premiered.substring(0, 4) }}
 						</div>
 
 						<template v-if="show.network">

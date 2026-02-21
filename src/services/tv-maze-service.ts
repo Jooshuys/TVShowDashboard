@@ -11,8 +11,9 @@ export default class TVMazeService {
 		const mappedItems = items
 			.map(item => ({
 				id: item.show.id,
+				genres: item.show.genres,
 				name: item.show.name,
-				genres: item.show.genres
+				premiered: item.show.premiered
 			}));
 		store.mutations.updateLoadingStatusOfType(LoadingTypes.SEARCH, LoadingStatuses.INACTIVE);
 		return mappedItems

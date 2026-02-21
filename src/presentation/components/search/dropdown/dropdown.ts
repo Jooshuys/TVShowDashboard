@@ -5,23 +5,23 @@ import DropdownItem from "@/presentation/components/search/dropdown-item/dropdow
 import DropdownCode from "./dropdown.code";
 
 export default defineComponent({
+	components: {
+		DropdownItem
+	},
 	props: {
 		searchTerm: {
 			type: String,
 			required: true
 		},
-		shows: {
+		searchResults: {
 			type: Array,
 			required: true
 		}
 	},
-	components: {
-		DropdownItem
-	},
 	setup: (props, context) => {
 		const code = new DropdownCode(
 			context.emit,
-			toRef(props, "shows") as Ref<SearchResult[]>,
+			toRef(props, "searchResults") as Ref<SearchResult[]>,
 			toRef(props, "searchTerm")
 		);
 

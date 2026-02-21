@@ -1,5 +1,8 @@
 <template>
-	<div class="SearchWrapper">
+	<div
+		ref="searchWrapper"
+		class="SearchWrapper"
+	>
 		<div class="SearchBar">
 			<span class="SearchIcon">
 				<i class="fa-solid fa-magnifying-glass"></i>
@@ -25,7 +28,7 @@
 		<Dropdown
 			v-if="showDropdown"
 			:searchTerm="searchTerm"
-			:shows="searchResults"
+			:searchResults="searchResults"
 			@onClick="updateDropdownVisibility(false, true)"
 		/>
 	</div>

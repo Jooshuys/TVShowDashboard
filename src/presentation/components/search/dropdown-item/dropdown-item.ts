@@ -1,9 +1,13 @@
 import { defineComponent, toRef, Ref } from "vue";
 import { SearchResult } from "@/models/search";
 import SetupComponentPresenter from "@/presenters/setup-component-presenter";
+import LoadingWrapper from "@/presentation/components/loading-wrapper/loading-wrapper.vue";
 import DropdownItemCode from "./dropdown-item.code";
 
 export default defineComponent({
+	components: {
+		LoadingWrapper
+	},
 	props: {
 		show: {
 			type: Object,

@@ -15,6 +15,10 @@
 			width: auto;
 			@include ShimmerAnimation();
 		}
+
+		&.DropdownItem {
+			margin-top: 0;
+		}
 	}
 
 	& + .GenreCardsWrapper {

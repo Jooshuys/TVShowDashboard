@@ -1,16 +1,14 @@
 <template>
 	<div class="DropdownContainer">
-		<div v-if="isLoading">Loading ...</div>
 		<p
-			v-else-if="!shows.length && searchTerm"
+			v-if="!shows.length && searchTerm"
 			class="NotFoundContainer"
 		>
-			No results
+			No results found. Try adjusting your search.
 		</p>
 		<template
-			v-else
-			v-for="show in shows"
-			:key="show.id"
+			v-for="(show, index) in shows"
+			:key="`dropdown-item-${index}`"
 		>
 			<DropdownItem
 				:show="show"
