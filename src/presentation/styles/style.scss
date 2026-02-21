@@ -1,5 +1,12 @@
+@use "@/presentation/styles/_colors.scss" as *;
+
 html, body {
 	margin: 0;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	background-color: $BrandBlack;
 }
 
 *,
@@ -11,4 +18,9 @@ html, body {
 .LayoutBlock {
 	max-width: 100%;
 	overflow: hidden;
+}
+
+.RoundedBlock {
+	border-top-right-radius: 1rem;
+	border-bottom-left-radius: 1rem;
 }

@@ -1,7 +1,14 @@
+@use "@/presentation/styles/_colors.scss" as *;
+
 .DropdownItem {
 	display: block;
 	padding: 0.25rem 0.5rem;
-	color: inherit;
+	color: $White;
 	text-decoration: none;
 	width: 100%;
+
+	&:hover {
+		color: $BrandAmber;
+		font-weight: bold;
+	}
 }

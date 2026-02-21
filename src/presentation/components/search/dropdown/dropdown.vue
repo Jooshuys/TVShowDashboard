@@ -1,5 +1,5 @@
 <template>
-	<div class="DropdownContainer">
+	<div class="DropdownContainer RoundedBlock">
 		<p
 			v-if="isLoadingFailure"
 			class="SearchFailedMessage"

@@ -1,19 +1,25 @@
+@use "@/presentation/styles/_colors.scss" as *;
+@use "@/presentation/styles/_z-index.scss" as *;
+
 .TopHeader {
 	position: sticky;
 	top: 0;
 	left: 0;
-	z-index: 1;
-	background: linear-gradient(
-		to bottom,
-		rgba(255, 255, 255, 1) 0%,
-		rgba(255, 255, 255, 0.8) calc(100% - 1rem),
-		rgba(255, 255, 255, 0) 100%
-	);
-	padding: 0.5rem 0.5rem 1rem;
+	z-index: $ThirdFloor;
+	background-color: $BrandGreen;
+	padding: 0.5rem;
+	border-bottom: 3px solid $BrandAmber;
+	// background: linear-gradient(
+	// 	to bottom,
+	// 	rgba(255, 255, 255, 1) 0%,
+	// 	rgba(255, 255, 255, 0.8) calc(100% - 1rem),
+	// 	#ffffff00 100%
+	// );
+	// padding: 0.5rem 0.5rem 1rem;
 
 	.HomeButton {
 		vertical-align: middle;
-		color: inherit;
+		color: $White;
 		text-decoration: none;
 		font-size: 2rem;
 	}

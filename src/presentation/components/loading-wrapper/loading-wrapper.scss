@@ -1,4 +1,4 @@
-@use "./../../styles/_animations.scss" as *;
+@use "@/presentation/styles/_animations.scss" as *;
 
 .LoadingWrapper {
 
@@ -41,7 +41,7 @@
 		}
 	}
 
-	& + .GenreCardsWrapper {
+	& + .GenreCardsControlsWrapper {
 		overflow: hidden;
 	}
 }

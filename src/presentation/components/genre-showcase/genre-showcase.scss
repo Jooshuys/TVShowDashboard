@@ -1,10 +1,91 @@
+@use "@/presentation/styles/_colors.scss" as *;
+@use "@/presentation/styles/_z-index.scss" as *;
+
+$scroll-thumb: #f00;
+$scroll-track: #f1f1f1;
+
 .GenreTitle {
+	display: inline-block;
+	background-color: $BrandAmber;
 	font-weight: bold;
-	min-width: 10rem;
+	min-width: 30rem;
+	padding: 0.75rem 5rem;
+	font-size: 1.5rem;
+	margin-left: 3rem;
 }
 
-.GenreCardsWrapper {
+.GenreCardsControlsWrapper {
+	position: relative;
+}
+
+.GenreCardsContentWrapper {
 	white-space: nowrap;
 	overflow-x: scroll;
 	max-width: 100vw;
+	padding: 0 3rem;
+	scroll-snap-type: x mandatory;
+	display: flex;
+	
+	&::before,
+	&::after {
+		content: "";
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		width: 10rem;
+		pointer-events: none;
+		z-index: $FirstFloor;
+	}
+
+	&::before {
+		left: 0;
+		background: linear-gradient(
+			to right,
+			rgba($BrandBlack, 1),
+			rgba($BrandBlack, 0)
+		);
+	}
+
+	&::after {
+		right: 0;
+		background: linear-gradient(
+			to left,
+			rgba($BrandBlack, 1),
+			rgba($BrandBlack, 0)
+		);
+	}
+
+	overflow-x: auto;
+	overflow-y: hidden;
+
+	/* Firefox */
+	scrollbar-width: none;
+
+	/* IE / old Edge */
+	-ms-overflow-style: none;
+
+	/* Chrome, Safari, Edge (Chromium) */
+	&::-webkit-scrollbar {
+		display: none;
+	}
+}
+
+.GenreShowcaseNavButton {
+	position: absolute;
+	z-index: $SecondFloor;
+	top: 11rem;
+	background: transparent;
+	border: none;
+	outline: none;
+	font-size: 3rem;
+	color: $BrandAmber;
+	cursor: pointer;
+
+	&.ButtonLeft {
+		left: 0.5rem;
+	}
+
+	&.ButtonRight {
+		right: 0.5rem;
+	}
 }

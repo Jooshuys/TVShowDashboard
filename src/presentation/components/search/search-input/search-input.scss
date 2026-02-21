@@ -1,3 +1,5 @@
+@use "@/presentation/styles/_colors.scss" as *;
+
 .SearchWrapper {
 	display: inline-block;
 	position: relative;
@@ -6,8 +8,7 @@
 
 	.SearchBar {
 		position: relative;
-		border: 1px solid #000;
-		border-radius: 1rem;
+		border: 2px solid $White;
 		padding: 0.25rem 0.5rem;
 
 		.UserSearchWrapper {
@@ -17,12 +18,14 @@
 
 		.SearchIcon {
 			font-size: 1rem;
+			color: $White;
 		}
 
 		.CloseIcon {
 			position: absolute;
 			right: 0.5rem;
 			padding: 0.15rem;
+			cursor: pointer;
 		}
 
 		.SearchInput {
@@ -32,6 +35,12 @@
 			font-size: 1rem;
 			width: calc(100% - 2rem);
 			margin-left: 0.5rem;
+			color: $White;
+
+			&::placeholder {
+				color: $White;
+				opacity: 0.7;
+			}
 		}
 	}
 }

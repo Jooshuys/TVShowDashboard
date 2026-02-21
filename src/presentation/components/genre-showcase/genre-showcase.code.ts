@@ -1,10 +1,17 @@
-import { computed } from "vue";
+import { computed, ref, Ref } from "vue";
 import { DEFAULT_SHOWS_PER_GENRE, DEFAULT_SHOW } from "@/static/defaults";
 import { TVMazeItem } from "@/models/tv-maze";
 import { LoadingStatuses, LoadingTypes } from "@/models/loading";
 import store from "@/store";
 
 export default class GenreShowcaseCode {
+	public scrollTrack: Ref<HTMLElement | null> = ref(null);
+	public scrollButtonLeft: Ref<HTMLButtonElement | null> = ref(null);
+	public scrollButtonRight: Ref<HTMLButtonElement | null> = ref(null);
+	
+	constructor(
+		public genreName: string
+	) { }
 
 	public isLoading = computed((): boolean => {
 		const loadingProcess = store.getters.loadingProcessOfType(LoadingTypes.GENRE_CLUSTER);
@@ -22,8 +29,20 @@ export default class GenreShowcaseCode {
 
 		return store.getters.showsOfGenre(this.genreName);
 	});
-	
-	constructor(
-		public genreName: string
-	) { }
+
+	public scrollOnTrack(directionIsRight: boolean): void {
+		if (!this.scrollTrack.value) {
+			return;
+		}
+
+		const oneStepInPixels = 224;
+		const currentPosition = this.scrollTrack.value.scrollLeft;
+		const snappedPosition = Math.floor(currentPosition / oneStepInPixels) * oneStepInPixels;
+		const newPosition = directionIsRight ? snappedPosition + oneStepInPixels : snappedPosition - oneStepInPixels;
+
+		this.scrollTrack.value.scrollTo({
+			left: newPosition,
+			behavior: 'smooth'
+		});
+	}
 }

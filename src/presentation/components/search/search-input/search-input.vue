@@ -3,7 +3,7 @@
 		ref="searchWrapper"
 		class="SearchWrapper"
 	>
-		<div class="SearchBar">
+		<div class="SearchBar RoundedBlock">
 			<span class="SearchIcon">
 				<i class="fa-solid fa-magnifying-glass"></i>
 			</span>

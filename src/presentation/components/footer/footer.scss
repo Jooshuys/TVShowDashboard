@@ -1,5 +1,9 @@
+@use "@/presentation/styles/_colors.scss" as *;
+
 .Footer {
 	text-align: center;
 	padding: 1rem;
-	background-color: #fff;
+	margin-top: 1rem;
+	background-color: $BrandTeal;
+	color: $White;
 }

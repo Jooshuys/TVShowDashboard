@@ -1,6 +1,12 @@
+@use "@/presentation/styles/_colors.scss" as *;
+
 .ShowCardLink {
 	color: inherit;
 	text-decoration: none;
+
+	&:last-of-type .ShowCard {
+		margin-right: 0;
+	}
 }
 
 .ShowCard {
@@ -8,33 +14,55 @@
 	overflow: hidden;
 	width: 13rem;
 	min-height: 15rem;
-	border-radius: 1rem;
-	background-color: #d0d0d0;
+	background-color: $BrandGreyL;
 	margin-right: 1rem;
+	margin-top: 1rem;
+	transition: margin 0.3s ease;
+
+	&:hover {
+		margin-top: 0;
+		margin-bottom: 1rem;
+	}
 
 	.ShowCardImageWrapper {
 		position: relative;
 		height: 295px;
 		font-size: 0;
-
-		.ShowCardRating {
-			position: absolute;
-			font-size: 1rem;
-			bottom: 0;
-			left: 0;
-			width: 100%;
-			padding: 0.5rem 0.25rem;
-			background-color: rgba(255, 255, 255, 0.7);
-		}
 	}
 
-	.ShowCardContent {
-		padding: 0.5rem;
+	.ShowCardTitle,
+	.ShowCardRating {
+		position: absolute;
+		font-size: 1rem;
+		font-weight: bold;
+		background-color: $BrandTeal;
+		color: $White;
+		left: 0;
+		width: 100%;
+		padding: 0.5rem 0.25rem;
 	}
 
 	.ShowCardTitle {
 		font-size: 1.2rem;
-		margin: 0 0 0.5rem;
+		top: 0;
+		margin: 0;
+		text-align: center;
+	}
+
+	.ShowCardRating {
+		bottom: 0;
+	}
+
+	.ShowCardRatingIcon {
+		color: $BrandAmber;
+	}
+
+	.ShowCardRatingScore {
+		margin-left: 0.5rem;
+	}
+
+	.ShowCardContent {
+		padding: 0.5rem;
 	}
 
 	.ShowCardDetailItem {
@@ -69,4 +97,30 @@
 			}
 		}
 	}
+}
+
+/* Tablet styles */
+@media (min-width: 768px) and (max-width: 1023px) {
+
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+	.ShowCard {
+
+		.ShowCardImageWrapper {
+			height: auto;
+		}
+
+		.ShowCardTitle,
+		.ShowCardRating {
+			position: static;
+			display: block;
+		}
+	}
+}
+
+/* Large screens */
+@media (min-width: 1280px) {
+
 }

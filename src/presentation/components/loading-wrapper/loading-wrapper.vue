@@ -4,17 +4,16 @@
 			{ 'LoadingWrapper': isLoading }
 		]"
 		:is="tag"
+		v-if="isLoading"
 	>
-		<template v-if="isLoading">
-			<div :class="[
-				...classes,
-				'LoadingContent'
-			]"></div>
-		</template>
-		<template v-else>
-			<slot></slot>
-		</template>
+		<div :class="[
+			...classes,
+			'LoadingContent'
+		]"></div>
 	</component>
+	<template v-else>
+		<slot></slot>
+	</template>
 </template>
 
 

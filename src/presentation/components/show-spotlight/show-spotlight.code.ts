@@ -5,7 +5,6 @@ import store from "@/store";
 
 export default class ShowSpotlightCode {
 
-	// TODO: Can this be removed?
 	public isLoading = computed((): boolean => {
 		const loadingProcess = store.getters.loadingProcessOfType(LoadingTypes.GENRE_CLUSTER);
 		return loadingProcess?.status === LoadingStatuses.ACTIVE;

@@ -4,16 +4,39 @@
 			:classes="['GenreTitle']"
 			:isLoading="isLoading"
 		>
-			<p class="GenreTitle">
+			<p class="GenreTitle RoundedBlock">
 				{{ genreName }}
 			</p>
 		</LoadingWrapper>
-		<div class="GenreCardsWrapper">
-			<ShowPreviewCard
-				v-for="show in showsOfGenre"
-				:key="show.id"
-				:show="show"
-			/>
+		<div class="GenreCardsControlsWrapper">
+			<div
+				class="GenreCardsContentWrapper"
+				ref="scrollTrack"
+			>
+				<button
+					class="GenreShowcaseNavButton ButtonLeft"
+					aria-label="Scroll left"
+					ref="scrollButtonLeft"
+					@click="scrollOnTrack(false)"
+				>
+					<i class="fa-solid fa-circle-chevron-left"></i>
+				</button>
+				
+				<ShowPreviewCard
+					v-for="show in showsOfGenre"
+					:key="show.id"
+					:show="show"
+				/>
+
+				<button
+					class="GenreShowcaseNavButton ButtonRight"
+					aria-label="Scroll right"
+					ref="scrollButtonRight"
+					@click="scrollOnTrack(true)"
+				>
+					<i class="fa-solid fa-circle-chevron-right"></i>
+				</button>
+			</div>
 		</div>
 	</div>
 </template>

@@ -9,8 +9,11 @@
 			class="ShowCardLink"
 			@click="handleNavigationItemClick"
 		>
-			<article class="ShowCard">
+			<article class="ShowCard RoundedBlock">
 				<div class="ShowCardImageWrapper">
+					<h2 class="ShowCardTitle">
+						{{ show.name }}
+					</h2>
 					<img
 						v-if="show.image"
 						:src="show.image.medium"
@@ -21,14 +24,14 @@
 						v-if="show.rating"
 						class="ShowCardRating"
 					>
-						⭐ {{ show.rating.average }}
+						<i class="fa-solid fa-star ShowCardRatingIcon"></i>
+						<span class="ShowCardRatingScore">
+							{{ show.rating.average?.toFixed(1) }}
+						</span>
 					</span>
 				</div>
 
 				<div class="ShowCardContent">
-					<h2 class="ShowCardTitle">
-						{{ show.name }}
-					</h2>
 
 					<div class="ShowCardMeta">
 						<span class="ShowCardDetailItem">
