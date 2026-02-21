@@ -1,5 +1,5 @@
 <template>
-	<header class="TopHeader LayoutBlock">
+	<header class="TopHeader">
 		<a
 			href="/overview"
 			class="HomeButton"

@@ -1,0 +1,23 @@
+@use "./../../styles/_animations.scss" as *;
+
+.LoadingWrapper {
+
+	.LoadingContent {
+		overflow: hidden;
+		display: inline-block;
+		height: 1.5rem;
+		margin-top: 1rem;
+
+		&::before {
+			display: block;
+			content: '';
+			height: 100%;
+			width: auto;
+			@include ShimmerAnimation();
+		}
+	}
+
+	& + .GenreCardsWrapper {
+		overflow: hidden;
+	}
+}

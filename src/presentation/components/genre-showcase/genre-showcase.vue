@@ -1,8 +1,13 @@
 <template>
 	<div>
-		<p class=GenreTitle>
-			{{ genreName }}
-		</p>
+		<LoadingWrapper
+			:classes="['GenreTitle']"
+			:isLoading="isLoading"
+		>
+			<p class="GenreTitle">
+				{{ genreName }}
+			</p>
+		</LoadingWrapper>
 		<div class="GenreCardsWrapper">
 			<ShowPreviewCard
 				v-for="show in showsOfGenre"

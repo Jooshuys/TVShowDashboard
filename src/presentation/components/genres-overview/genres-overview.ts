@@ -1,6 +1,6 @@
 import { defineComponent } from "vue";
 import SetupComponentPresenter from "@/presenters/setup-component-presenter";
-import GenreShowcase from "../genre-showcase/genre-showcase.vue";
+import GenreShowcase from "@/presentation/components/genre-showcase/genre-showcase.vue";
 import GenreOverviewCode from "./genres-overview.code";
 
 export default defineComponent({
