@@ -8,11 +8,6 @@ export default class SearchInputCode {
 	public searchResults = ref<SearchResult[]>([]);
 	public showDropdown = ref<boolean>(false);
 	public searchWrapper = ref<HTMLDivElement | null>(null);
-
-	// public searchResultsAsString = computed((): string => {
-	// 	return this.searchResults.value.map((item) => item.name).join(",");
-	// });
-
 	private debounceTimeout: NodeJS.Timeout | number | null = null;
 	private boundHandleOutsideClick: (event: MouseEvent) => void;
 
@@ -28,6 +23,24 @@ export default class SearchInputCode {
 		document.removeEventListener("click", this.boundHandleOutsideClick);
 	}
 
+	public updateDropdownVisibility(isVisible: boolean, includingReset = false): void {
+		this.showDropdown.value = isVisible;
+		if (!includingReset) {
+			return;
+		}
+
+		this.resetSearchTerm();
+	}
+
+	public resetSearchTerm(): void {
+		if (!this.searchInput.value) {
+			return;
+		}
+
+		this.searchInput.value.value = '';
+		this.setSearchTerm();
+	}
+
 	public setSearchTerm(): void {
 		if (!this.searchInput.value) {
 			return;
@@ -37,6 +50,7 @@ export default class SearchInputCode {
 
 		if (this.searchTerm.value.trim() === "") {
 			this.searchResults.value = [];
+			this.updateDropdownVisibility(false);
 			return;
 		}
 
@@ -44,7 +58,11 @@ export default class SearchInputCode {
 	}
 
 	public onInputFocus(): void {
-		this.showDropdown.value = true;
+		if (!this.searchResults.value.length) {
+			return;
+		}
+
+		this.updateDropdownVisibility(true);
 	}
 
 	private debounceSearch(): void {
@@ -61,7 +79,7 @@ export default class SearchInputCode {
 			return;
 		}
 
-		this.showDropdown.value = true;
+		this.updateDropdownVisibility(true);
 
 		const shows = await TVMazeService.retrieveShowsThatMatchName(this.searchTerm.value);
 		
@@ -73,6 +91,6 @@ export default class SearchInputCode {
 			return;
 		}
 
-		this.showDropdown.value = false;
+		this.updateDropdownVisibility(false);
 	}
 }

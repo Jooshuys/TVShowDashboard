@@ -1,6 +1,7 @@
 import { Mutations } from "@/models/store";
 import RoutePresenter from "@/presenters/route-presenter";
 import state from "./state";
+import { LoadingStatuses, LoadingTypes } from "@/models/loading";
 
 const mutations: Mutations = {
 	addShowsToGenreCluster: (shows) => {
@@ -34,6 +35,13 @@ const mutations: Mutations = {
 		state.router.props.id = id ? id : 0;
 		state.router.current = routeName;
 		history.pushState({}, '', url);
+	},
+	updateLoadingStatusOfType: (type, status) => {
+		if (!state.loadingCluster[type]) {
+			return;
+		}
+
+		state.loadingCluster[type].status = status;
 	}
 };
 

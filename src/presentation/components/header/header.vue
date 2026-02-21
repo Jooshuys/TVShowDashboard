@@ -1,11 +1,11 @@
 <template>
-	<header>
+	<header class="TopHeader">
 		<a
 			href="/overview"
 			class="HomeButton"
 			@click="handleNavigationItemClick"
 		>
-			<i class="fa-solid fa-house"></i>
+			<i class="fa-solid fa-clapperboard"></i>
 		</a>
 		<SearchInput />
 	</header>

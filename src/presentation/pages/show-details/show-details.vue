@@ -1,7 +1,8 @@
 <template>
 	<div>
+		<div v-if="isLoading">Loading ...</div>
 		<article
-			v-if="show"
+			v-else-if="show"
 			class="SpotlightWrapper"
 		>
 			<img

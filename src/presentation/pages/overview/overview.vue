@@ -1,7 +1,7 @@
 <template>
 	<div>
-		Hello overview!
-		<GenresOverview />
+		<div v-if="isLoading">Loading ...</div>
+		<GenresOverview v-else />
 	</div>
 </template>
 

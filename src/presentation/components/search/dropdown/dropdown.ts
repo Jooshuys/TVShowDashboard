@@ -1,5 +1,8 @@
-import { defineComponent, toRef } from "vue";
+import { defineComponent, toRef, Ref } from "vue";
+import { SearchResult } from "@/models/search";
+import SetupComponentPresenter from "@/presenters/setup-component-presenter";
 import DropdownItem from "@/presentation/components/search/dropdown-item/dropdown-item.vue";
+import DropdownCode from "./dropdown.code";
 
 export default defineComponent({
 	props: {
@@ -7,7 +10,7 @@ export default defineComponent({
 			type: String,
 			required: true
 		},
-		items: {
+		shows: {
 			type: Array,
 			required: true
 		}
@@ -15,13 +18,13 @@ export default defineComponent({
 	components: {
 		DropdownItem
 	},
-	setup: (props) => {
-		const searchTerm = toRef(props, "searchTerm");
-		const items = toRef(props, "items");
+	setup: (props, context) => {
+		const code = new DropdownCode(
+			context.emit,
+			toRef(props, "shows") as Ref<SearchResult[]>,
+			toRef(props, "searchTerm")
+		);
 
-		return {
-			searchTerm,
-			items
-		};
+		return SetupComponentPresenter.setupComponent(code);
 	}
 });
