@@ -19,6 +19,26 @@
 		&.DropdownItem {
 			margin-top: 0;
 		}
+
+		&.SpotlightImage {
+			width: 100%;
+			height: 15rem;
+		}
+
+		&.SpotlightTitle {
+			height: 3rem;
+			width: 30rem;
+		}
+
+		&.SpotlightSummary {
+			height: 10rem;
+			width: 70vw;
+		}
+
+		&.SpotlightContentDetails {
+			height: 10rem;
+			width: 25vw;
+		}
 	}
 
 	& + .GenreCardsWrapper {

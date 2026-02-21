@@ -1,75 +1,101 @@
 <template>
 	<article
-		v-if="show"
 		class="SpotlightWrapper"
 	>
-		<img
-			v-if="show.image"
-			:src="show.image.original"
-			:alt="`${show.name} poster`"
-			class="SpotlightImage"
-		/>
+		<LoadingWrapper
+			:classes="['SpotlightImage']"
+			:isLoading="isLoading"
+		>
+			<img
+				v-if="show?.image"
+				:src="show.image.original"
+				:alt="`${show.name} poster`"
+				class="SpotlightImage"
+			/>
+		</LoadingWrapper>
 		<div class="SpotlightContentWrapper">
-			<h2 class="SpotlightTitle">
-				{{ show.name }}
-			</h2>
+			<LoadingWrapper
+				:classes="['SpotlightTitle']"
+				:isLoading="isLoading"
+			>
+				<h2	
+					v-if="show"
+					class="SpotlightTitle"
+				>
+					{{ show.name }}
+				</h2>
+			</LoadingWrapper>
 			<div class="SpotlightContent">
-				<p
-					class="SpotlightSummary"
-					v-html="show.summary"
-				></p>
-				<div class="SpotlightContentDetails">
-					<div v-if="show.rating">
-						<label class="SpotlightLabel">
-							Rating:
-						</label>
-							{{ show.rating.average }} / 10
-					</div>
+				<LoadingWrapper
+					:classes="['SpotlightSummary']"
+					:isLoading="isLoading"
+				>
+					<p
+						v-if="show"
+						class="SpotlightSummary"
+						v-html="show.summary"
+					></p>
+				</LoadingWrapper>
+				<LoadingWrapper
+					:classes="['SpotlightContentDetails']"
+					:isLoading="isLoading"
+				>
+					<div
+						v-if="show"
+						class="SpotlightContentDetails"
+					>
+						<div v-if="show.rating">
+							<label class="SpotlightLabel">
+								Rating:
+							</label>
+								{{ show.rating.average }} / 10
+						</div>
 
-					<div>
-						<label class="SpotlightLabel">
-							Genres:
-						</label>
-						{{ showGenresCommaSeparated }}
-					</div>
-
-					<div>
-						<label class="SpotlightLabel">
-							Average runtime:
-						</label>
-						{{ show.runtime ? show.runtime : show.averageRuntime }} minutes
-					</div>
-
-					<div>
-						<label class="SpotlightLabel">
-							Year:
-						</label>
-						{{ show.premiered.substring(0, 4) }}
-					</div>
-
-					<template v-if="show.network">
 						<div>
 							<label class="SpotlightLabel">
-								Network:
+								Genres:
 							</label>
-							{{ show.network.name }}
+							{{ showGenresCommaSeparated }}
 						</div>
-						
+
 						<div>
 							<label class="SpotlightLabel">
-								Country:
+								Average runtime:
 							</label>
-							{{ show.network.country.name }}
+							{{ show.runtime ? show.runtime : show.averageRuntime }} minutes
 						</div>
-					</template>
 
-					<div>
-						<label class="SpotlightLabel">
-							Language:
-						</label>
-						{{ show.language }}
+						<div>
+							<label class="SpotlightLabel">
+								Year:
+							</label>
+							{{ show.premiered.substring(0, 4) }}
+						</div>
+
+						<template v-if="show.network">
+							<div>
+								<label class="SpotlightLabel">
+									Network:
+								</label>
+								{{ show.network.name }}
+							</div>
+							
+							<div>
+								<label class="SpotlightLabel">
+									Country:
+								</label>
+								{{ show.network.country.name }}
+							</div>
+						</template>
+
+						<div>
+							<label class="SpotlightLabel">
+								Language:
+							</label>
+							{{ show.language }}
+						</div>
 					</div>
-				</div>
+				</LoadingWrapper>
 			</div>
 		</div>
 	</article>
