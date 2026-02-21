@@ -1,5 +1,5 @@
 <template>
-	<div class="PageWrapper LayoutBlock">
+	<div class="PageWrapper">
 		<Header />
 		<main class="MainContent LayoutBlock">
 			<component :is="CurrentComponent" />
