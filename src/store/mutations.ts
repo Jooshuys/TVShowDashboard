@@ -5,6 +5,10 @@ import state from "./state";
 const mutations: Mutations = {
 	addShowsToGenreCluster: (shows) => {
 		shows.forEach(show => {
+			if (show.genres.length === 0) {
+				show.genres = ['Other'];
+			}
+
 			show.genres.forEach(genre => {
 				if (!state.genreCluster[genre]) {
 					state.genreCluster[genre] = [show];
