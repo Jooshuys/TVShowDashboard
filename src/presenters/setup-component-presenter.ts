@@ -1,8 +1,8 @@
 import { reactive, UnwrapNestedRefs } from "vue";
 
-export default class SetupComponentPresenter {
+class SetupComponentPresenter {
 
-	public static setupComponent<T extends object>(code: T): UnwrapNestedRefs<T> {
+	public setupComponent<T extends object>(code: T): UnwrapNestedRefs<T> {
 		const prototype = Object.getPrototypeOf(code);
 
 		for (const key of Object.getOwnPropertyNames(prototype)) {
@@ -29,3 +29,5 @@ export default class SetupComponentPresenter {
 		return reactive(code) as UnwrapNestedRefs<T>;
 	}
 }
+
+export default new SetupComponentPresenter();

@@ -1,5 +1,5 @@
 import { defineComponent, onMounted } from "vue";
-import SetupComponentPresenter from "@/presenters/setup-component-presenter";
+import setupComponentPresenter from "@/presenters/setup-component-presenter";
 import Header from "@/presentation/components/header/header.vue";
 import Footer from "@/presentation/components/footer/footer.vue";
 import AppCode from "./app.code";
@@ -14,6 +14,6 @@ export default defineComponent({
 
 		onMounted(code.mounted.bind(code));
 
-		return SetupComponentPresenter.setupComponent(code);
+		return setupComponentPresenter.setupComponent(code);
 	}
 });

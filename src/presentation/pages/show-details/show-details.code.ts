@@ -2,7 +2,7 @@ import { computed, watch, WatchStopHandle } from "vue";
 import { TVMazeItem } from "@/models/tv-maze";
 import { Router } from "@/models/router";
 import { LoadingStatuses, LoadingTypes } from "@/models/loading";
-import TVMazeService from "@/services/tv-maze-service";
+import tvMazeService from "@/services/tv-maze-service";
 import store from "@/store";
 
 export default class ShowDetailsCode {
@@ -81,6 +81,6 @@ export default class ShowDetailsCode {
 			return;
 		}
 
-		await TVMazeService.retrieveShowById(this.router.value.props.id);
+		await tvMazeService.retrieveShowById(this.router.value.props.id);
 	}
 }

@@ -1,6 +1,6 @@
 import { defineComponent, toRef, Ref } from "vue";
 import { SearchResult } from "@/models/search";
-import SetupComponentPresenter from "@/presenters/setup-component-presenter";
+import setupComponentPresenter from "@/presenters/setup-component-presenter";
 import LoadingWrapper from "@/presentation/components/loading-wrapper/loading-wrapper.vue";
 import DropdownItemCode from "./dropdown-item.code";
 
@@ -19,6 +19,6 @@ export default defineComponent({
 			context.emit,
 			toRef(props, "show") as Ref<SearchResult>
 		);
-		return SetupComponentPresenter.setupComponent(code);
+		return setupComponentPresenter.setupComponent(code);
 	}
 });

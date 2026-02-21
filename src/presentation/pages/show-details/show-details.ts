@@ -1,5 +1,5 @@
 import { defineComponent, onMounted, onUnmounted } from "vue";
-import SetupComponentPresenter from "@/presenters/setup-component-presenter";
+import setupComponentPresenter from "@/presenters/setup-component-presenter";
 import ShowDetailsCode from "./show-details.code";
 
 export default defineComponent({
@@ -9,6 +9,6 @@ export default defineComponent({
 		onMounted(code.mounted.bind(code));
 		onUnmounted(code.unmounted.bind(code));
 
-		return SetupComponentPresenter.setupComponent(code);
+		return setupComponentPresenter.setupComponent(code);
 	}
 });

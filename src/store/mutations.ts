@@ -1,5 +1,5 @@
 import { Mutations } from "@/models/store";
-import RoutePresenter from "@/presenters/route-presenter";
+import routePresenter from "@/presenters/route-presenter";
 import state from "./state";
 
 const mutations: Mutations = {
@@ -33,8 +33,8 @@ const mutations: Mutations = {
 		}
 	},
 	navigateToRoute: (url) => {
-		const routeName = RoutePresenter.retrieveRouteNameFromUrl(url);
-		const id = RoutePresenter.retrieveIdFromUrl(url);
+		const routeName = routePresenter.retrieveRouteNameFromUrl(url);
+		const id = routePresenter.retrieveIdFromUrl(url);
 		state.router = {
 			current: routeName,
 			props: {

@@ -3,10 +3,12 @@ import { SearchResult } from "@/models/search";
 import { TVMazeItem, TVMazeSearchItem } from "@/models/tv-maze";
 import store from "@/store";
 
-export default class TVMazeService {
-	public static async retrieveShowsThatMatchName(query: string): Promise<SearchResult[]> {
+class TVMazeService {
+	private apiUrl = 'https://api.tvmaze.com';
+
+	public async retrieveShowsThatMatchName(query: string): Promise<SearchResult[]> {
 		store.mutations.updateLoadingStatusOfType(LoadingTypes.SEARCH, LoadingStatuses.ACTIVE);
-		const response = await fetch(`https://api.tvmaze.com/search/shows?q=${query}`);
+		const response = await fetch(`${this.apiUrl}/search/shows?q=${query}`);
 		const items: TVMazeSearchItem[] = await response.json();
 		const mappedItems = items
 			.map(item => ({
@@ -19,11 +21,11 @@ export default class TVMazeService {
 		return mappedItems
 	}
 
-	public static async retrieveShowsForGenreCluster(pageStart: number, amountOfPages = 5): Promise<void> {
+	public async retrieveShowsForGenreCluster(pageStart: number, amountOfPages = 5): Promise<void> {
 		store.mutations.updateLoadingStatusOfType(LoadingTypes.GENRE_CLUSTER, LoadingStatuses.ACTIVE);
 		let combinedResults: TVMazeItem[] = [];
 		for (let i = pageStart; i < pageStart + amountOfPages; i++) {
-			const response = await fetch(`https://api.tvmaze.com/shows?page=${i}`);
+			const response = await fetch(`${this.apiUrl}/shows?page=${i}`);
 			const shows: TVMazeItem[] = await response.json();
 			const showsWithImages = shows.filter((show) => show.image !== null);
 			combinedResults = combinedResults.concat(showsWithImages);
@@ -32,9 +34,9 @@ export default class TVMazeService {
 		store.mutations.updateLoadingStatusOfType(LoadingTypes.GENRE_CLUSTER, LoadingStatuses.INACTIVE);
 	}
 
-	public static async retrieveShowById(id: number): Promise<void> {
+	public async retrieveShowById(id: number): Promise<void> {
 		store.mutations.updateLoadingStatusOfType(LoadingTypes.GENRE_CLUSTER, LoadingStatuses.ACTIVE);
-		const response = await fetch(`https://api.tvmaze.com/shows/${id}`);
+		const response = await fetch(`${this.apiUrl}/shows/${id}`);
 		const show = await response.json() as TVMazeItem | undefined;
 		if (!show) {
 			return;
@@ -44,3 +46,5 @@ export default class TVMazeService {
 		store.mutations.updateLoadingStatusOfType(LoadingTypes.GENRE_CLUSTER, LoadingStatuses.INACTIVE);
 	}
 }
+
+export default new TVMazeService();

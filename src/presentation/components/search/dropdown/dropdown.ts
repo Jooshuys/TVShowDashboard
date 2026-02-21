@@ -1,6 +1,6 @@
 import { defineComponent, toRef, Ref } from "vue";
 import { SearchResult } from "@/models/search";
-import SetupComponentPresenter from "@/presenters/setup-component-presenter";
+import setupComponentPresenter from "@/presenters/setup-component-presenter";
 import DropdownItem from "@/presentation/components/search/dropdown-item/dropdown-item.vue";
 import DropdownCode from "./dropdown.code";
 
@@ -25,6 +25,6 @@ export default defineComponent({
 			toRef(props, "searchTerm")
 		);
 
-		return SetupComponentPresenter.setupComponent(code);
+		return setupComponentPresenter.setupComponent(code);
 	}
 });

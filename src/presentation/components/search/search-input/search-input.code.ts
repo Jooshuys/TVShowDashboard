@@ -1,6 +1,6 @@
 import { ref, Ref } from "vue";
 import { SearchResult } from "@/models/search";
-import TVMazeService from "@/services/tv-maze-service";
+import tvMazeService from "@/services/tv-maze-service";
 
 export default class SearchInputCode {
 	public searchInput: Ref<HTMLInputElement | null> = ref(null);
@@ -81,7 +81,7 @@ export default class SearchInputCode {
 
 		this.updateDropdownVisibility(true);
 
-		const shows = await TVMazeService.retrieveShowsThatMatchName(this.searchTerm.value);
+		const shows = await tvMazeService.retrieveShowsThatMatchName(this.searchTerm.value);
 		
 		this.searchResults.value = shows;
 	}

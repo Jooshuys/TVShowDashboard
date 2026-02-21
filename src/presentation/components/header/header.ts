@@ -1,5 +1,5 @@
 import { defineComponent } from "vue";
-import SetupComponentPresenter from "@/presenters/setup-component-presenter";
+import setupComponentPresenter from "@/presenters/setup-component-presenter";
 import SearchInput from "@/presentation/components/search/search-input/search-input.vue";
 import HeaderCode from "./header.code";
 
@@ -10,6 +10,6 @@ export default defineComponent({
 	setup: () => {
 		const code = new HeaderCode();
 
-		return SetupComponentPresenter.setupComponent(code);
+		return setupComponentPresenter.setupComponent(code);
 	}
 });

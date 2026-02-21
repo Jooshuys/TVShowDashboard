@@ -2,8 +2,8 @@ import { Component, computed } from "vue";
 import { RoutesCluster, Routes, Router } from "@/models/router";
 import Overview from "@/presentation/pages/overview/overview.vue";
 import ShowDetails from "@/presentation/pages/show-details/show-details.vue";
-import RoutePresenter from "@/presenters/route-presenter";
-import TVMazeService from "@/services/tv-maze-service";
+import routePresenter from "@/presenters/route-presenter";
+import tvMazeService from "@/services/tv-maze-service";
 import store from "@/store";
 
 export default class AppCode {
@@ -21,8 +21,8 @@ export default class AppCode {
 	});
 
 	public mounted(): void {
-		RoutePresenter.prepareForRoutingActions();
+		routePresenter.prepareForRoutingActions();
 
-		void TVMazeService.retrieveShowsForGenreCluster(0);
+		void tvMazeService.retrieveShowsForGenreCluster(0);
 	}
 }

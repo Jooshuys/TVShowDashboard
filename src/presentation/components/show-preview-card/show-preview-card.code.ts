@@ -1,7 +1,7 @@
 import { computed } from "vue";
 import { LoadingTypes, LoadingStatuses } from "@/models/loading";
 import { TVMazeItem } from "@/models/tv-maze";
-import RoutePresenter from "@/presenters/route-presenter";
+import routePresenter from "@/presenters/route-presenter";
 import store from "@/store";
 
 export default class ShowPreviewCardCode {
@@ -16,6 +16,6 @@ export default class ShowPreviewCardCode {
 	});
 
 	public handleNavigationItemClick(event: PointerEvent) {
-		RoutePresenter.handleNavigationItemClick(event);
+		routePresenter.handleNavigationItemClick(event);
 	}
 }

@@ -2,7 +2,7 @@ import { computed, Ref } from "vue";
 import { SearchResult } from "@/models/search";
 import { Emits } from "@/models/emits";
 import { LoadingStatuses, LoadingTypes } from "@/models/loading";
-import RoutePresenter from "@/presenters/route-presenter";
+import routePresenter from "@/presenters/route-presenter";
 import store from "@/store";
 
 export default class DropdownItemCode {
@@ -18,7 +18,7 @@ export default class DropdownItemCode {
 	});
 	
 	public handleNavigationItemClick(event: PointerEvent) {
-		RoutePresenter.handleNavigationItemClick(event);
+		routePresenter.handleNavigationItemClick(event);
 		this.emit(Emits.ON_CLICK);
 	}
 }
