@@ -86,14 +86,12 @@
 	}
 }
 
-/* Tablet styles */
 @media (min-width: 768px) {
 	.GenreCardsContentWrapper {
 		max-width: 100vw;
 	}
 }
 
-/* Desktop */
 @media (min-width: 1024px) {
 	.ShowCard {
 
@@ -107,9 +105,4 @@
 			display: block;
 		}
 	}
-}
-
-/* Large screens */
-@media (min-width: 1280px) {
-
 }

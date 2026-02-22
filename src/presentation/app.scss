@@ -1,6 +1,15 @@
 .PageWrapper {
-	grid-template-rows: auto 1fr auto;
+	display: flex;
+	flex-direction: column;
 	min-height: 100vh;
-	display: grid;
-	position: relative;
+}
+
+.MainContent {
+	flex: 1;
+}
+
+@media (min-width: 768px) {
+	.PageWrapper {
+		min-height: 100vh;
+	}
 }

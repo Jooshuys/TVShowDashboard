@@ -38,24 +38,29 @@
 
 		&.SpotlightImage {
 			width: 100%;
-			height: 40vh;
+			height: 20vh;
 		}
 
 		&.SpotlightTitle {
-			height: 10vh;
-			width: 30rem;
+			height: 7vh;
+			width: 100%;
+			padding: 0;
+			margin-bottom: 0;
 			background: transparent;
 		}
 
 		&.SpotlightSummary {
 			height: 20vh;
-			width: 70vw;
+			width: 100%;
+			padding: 0;
+			margin-top: 1rem;
 			background: transparent;
 		}
 
 		&.SpotlightContentDetails {
 			height: 20vh;
-			width: 25vw;
+			width: 100%;
+			padding: 0;
 			background: transparent;
 		}
 	}
@@ -66,5 +71,53 @@
 
 	& + .SpotlightContentWrapper {
 		background: transparent;
+	}
+}
+
+@media (min-width: 768px) {
+	
+	.LoadingWrapper {
+
+		.LoadingContent {
+
+			&.SpotlightImage {
+				height: 40vh;
+			}
+
+			&.SpotlightTitle {
+				height: 10vh;
+				width: 30rem;
+				padding: 1rem 3rem;
+				margin-bottom: 2rem;
+			}
+
+			&.SpotlightSummary {
+				width: 60vw;
+				padding: 1rem;
+				margin-top: 0;
+			}
+
+			&.SpotlightContentDetails {
+				width: 30vw;
+				padding: 1rem;
+			}
+		}
+	}
+}
+
+@media (min-width: 1024px) {
+	
+	.LoadingWrapper {
+
+		.LoadingContent {
+
+			&.SpotlightSummary {
+				width: 70vw;
+			}
+
+			&.SpotlightContentDetails {
+				width: 25vw;
+			}
+		}
 	}
 }
