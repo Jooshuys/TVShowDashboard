@@ -45,7 +45,8 @@ describe("genre showcase", () => {
 		[LoadingStatuses.INACTIVE, false],
 		[LoadingStatuses.ERROR, false],
 		[LoadingStatuses.ACTIVE, true]
-	])("isLoading: when loading use case %#, give expected result.", (input, output) => {
+	])("isLoading: when loading use case %#, give expected result.",
+		(input, output) => {
 		mocksStore.updateLoadingProcessStatus(input);
 		expect(code.isLoading.value).toEqual(output);
 	});
@@ -54,7 +55,8 @@ describe("genre showcase", () => {
 		[-1, true],
 		[0, true],
 		[1, false]
-	])("isButtonScrollLeftDisabled: when snapped index use case %#, give expected result.", (input, output) => {
+	])("isButtonScrollLeftDisabled: when snapped index use case %#, give expected result.",
+		(input, output) => {
 		code["snappedIndex"].value = input;
 		expect(code.isButtonScrollLeftDisabled.value).toEqual(output);
 	});
@@ -63,7 +65,8 @@ describe("genre showcase", () => {
 		[0, false],
 		[1, false],
 		[2, true]
-	])("isButtonScrollRightDisabled: when snapped index use case %#, give expected result.", (input, output) => {
+	])("isButtonScrollRightDisabled: when snapped index use case %#, give expected result.",
+		(input, output) => {
 		mocksStore.updateLoadingProcessStatus(LoadingStatuses.INACTIVE);
 		code["amountOfCardsThatFit"] = 1;
 		code["snappedIndex"].value = input;
@@ -73,7 +76,8 @@ describe("genre showcase", () => {
 	test.each([
 		[LoadingStatuses.INACTIVE, 3, { id: 0 }],
 		[LoadingStatuses.ACTIVE, 30, DEFAULT_SHOW]
-	])("showsOfGenre: when loading use case %#, give expected result.", (input, showsCount, firstShow) => {
+	])("showsOfGenre: when loading use case %#, give expected result.",
+		(input, showsCount, firstShow) => {
 		mocksStore.updateLoadingProcessStatus(input);
 		const result = code.showsOfGenre.value;
 		expect(result.length).toEqual(showsCount);
@@ -83,7 +87,8 @@ describe("genre showcase", () => {
 	test.each([
 		[false],
 		[true]
-	])("mounted: when scroll track use case %#, give expected result.", (isScrollTrackAvailable) => {
+	])("mounted: when scroll track use case %#, give expected result.",
+		(isScrollTrackAvailable) => {
 		const boundScrollListener = vi.fn();
 		const scrollTrack = {
 			addEventListener: vi.fn()
@@ -112,7 +117,8 @@ describe("genre showcase", () => {
 	test.each([
 		[false],
 		[true]
-	])("unmounted: when scroll track use case %#, give expected result.", (isScrollTrackAvailable) => {
+	])("unmounted: when scroll track use case %#, give expected result.",
+		(isScrollTrackAvailable) => {
 		const boundScrollListener = vi.fn();
 		const scrollTrack = {
 			removeEventListener: vi.fn()
@@ -237,7 +243,8 @@ describe("genre showcase", () => {
 		[true, -1, 3],
 		[true, 1, 5],
 		[true, 0, 4]
-	])("unmounted: when scroll track use case %#, give expected result.", (isScrollTrackAvailable, step, snappedIndex) => {
+	])("unmounted: when scroll track use case %#, give expected result.",
+		(isScrollTrackAvailable, step, snappedIndex) => {
 		const context = {
 			scrollTrack: { value: isScrollTrackAvailable ? { scrollLeft: 1000 } : null },
 			cardWidthInPixels: 224

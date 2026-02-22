@@ -17,13 +17,6 @@ describe("sanitize presenter", () => {
 		vi.restoreAllMocks();
 	});
 
-	test.each([
-		[true, true],
-		[false, false]
-	])("someTest: when use case %#, give expected result.", (input, output) => {
-		expect(1).toEqual(1);
-	});
-
 	it("sanitize: when method called, passed string should be sanitized by DOMPurify.", () => {
 		const result = sanitizePresenter.sanitize("<div>test</div>");
 		expect(result).toEqual("<div>test</div>-sanitized");

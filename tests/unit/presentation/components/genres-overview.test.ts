@@ -45,7 +45,8 @@ describe("genres overview", () => {
 		[LoadingStatuses.INACTIVE, false],
 		[LoadingStatuses.ERROR, false],
 		[LoadingStatuses.ACTIVE, true]
-	])("isLoading: when loading use case %#, give expected result.", (input, output) => {
+	])("isLoading: when loading use case %#, give expected result.",
+		(input, output) => {
 		mocksStore.updateLoadingProcessStatus(input);
 		expect(code.isLoading.value).toEqual(output);
 	});
@@ -66,7 +67,8 @@ describe("genres overview", () => {
 	test.each([
 		[false, 0],
 		[true, 1]
-	])("mounted: when bottom marker use case %#, give expected result.", (isMarkerAvailable, observeCallCount) => {
+	])("mounted: when bottom marker use case %#, give expected result.",
+		(isMarkerAvailable, observeCallCount) => {
 		const observe = vi.fn();
 		const disconnect = vi.fn();
 		let capturedCallback: any;
