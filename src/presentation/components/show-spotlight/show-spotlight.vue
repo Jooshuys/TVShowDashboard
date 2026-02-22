@@ -1,7 +1,5 @@
 <template>
-	<article
-		class="SpotlightWrapper"
-	>
+	<article class="SpotlightWrapper">
 		<LoadingWrapper
 			:classes="['SpotlightImage']"
 			:isLoading="isLoading"
