@@ -38,7 +38,7 @@ vi.mock("@/presenters/sanitize-presenter", () => ({
 	default: mocksSanitizePresenter
 }));
 
-describe("ShowSpotlightCode", () => {
+describe("show spotlight", () => {
 	let showMock: any;
 	let code: ShowSpotlightCode;
 
