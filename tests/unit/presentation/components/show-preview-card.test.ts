@@ -63,7 +63,7 @@ describe("show preview card", () => {
 		[LoadingStatuses.ACTIVE, true],
 		[LoadingStatuses.INACTIVE, false],
 		[LoadingStatuses.ERROR, false]
-	])("isLoading: when loading process status %#, returns expected boolean.", (status, expected) => {
+	])("isLoading: when loading process status %#, gives expected boolean.", (status, expected) => {
 		mocksStore.updateLoadingProcessStatus(status);
 		expect(code.isLoading.value).toEqual(expected);
 	});
@@ -71,7 +71,7 @@ describe("show preview card", () => {
 	test.each([
 		[8.3, "8.3"],
 		[null, ""]
-	])("showRating: when rating use case %#, returns expected string.", (rating, expected) => {
+	])("showRating: when rating use case %#, gives expected string.", (rating, expected) => {
 		showMock.rating.average = rating;
 		expect(code.showRating.value).toEqual(expected);
 	});
@@ -79,7 +79,7 @@ describe("show preview card", () => {
 	test.each([
 		["2022-03-15", "2022"],
 		[null, ""]
-	])("showYear: when premiered use case %#, returns expected year.", (premiered, expected) => {
+	])("showYear: when premiered use case %#, gives expected year.", (premiered, expected) => {
 		showMock.premiered = premiered;
 		expect(code.showYear.value).toEqual(expected);
 	});
@@ -87,30 +87,30 @@ describe("show preview card", () => {
 	test.each([
 		["Test Network", "Test Network"],
 		[null, ""]
-	])("showNetworkName: when network use case %#, returns expected value.", (networkName, expected) => {
+	])("showNetworkName: when network use case %#, gives expected value.", (networkName, expected) => {
 		showMock.network = networkName ? { name: networkName } : null;
 		expect(code.showNetworkName.value).toEqual(expected);
 	});
 
-	it("cardSummary: returns formatted description including year, network, and rating", () => {
+	it("cardSummary: when fields available, give expected description.", () => {
 		expect(code.cardSummary.value).toEqual(
 			"Test Show, released in 2022, aired on Test Network, rated 8.3 out of 10."
 		);
 	});
 
-	it("cardSummary: returns description with missing optional fields", () => {
+	it("cardSummary: when fields missing, give expected description.", () => {
 		showMock.premiered = null;
 		showMock.network = null;
 		showMock.rating.average = null;
 		expect(code.cardSummary.value).toEqual("Test Show");
 	});
 
-	it("sanitizedShowDescription: calls sanitizePresenter.sanitize with show.summary", () => {
+	it("sanitizedShowDescription: when method called, gives sanitized summary.", () => {
 		expect(code.sanitizedShowDescription.value).toEqual("Test summary-sanitized");
 		expect(mocksSanitizePresenter.sanitize).toHaveBeenCalledWith("Test summary");
 	});
 
-	it("handleNavigationItemClick: calls routePresenter with event", () => {
+	it("handleNavigationItemClick: when called, triggers the route presenter.", () => {
 		const event = { type: "pointerdown" } as PointerEvent;
 		const context = code;
 		context.handleNavigationItemClick.bind(context)(event);

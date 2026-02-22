@@ -19,10 +19,6 @@ export default class ShowSpotlightCode {
 		return store.getters.genreClusterHasShows();
 	});
 
-	public showForCurrentRoute = computed((): TVMazeItem | undefined => {
-		return store.getters.showForCurrentRoute();
-	});
-
 	public show = computed((): TVMazeItem | undefined => {
 		return store.getters.showForCurrentRoute();
 	});
@@ -40,7 +36,6 @@ export default class ShowSpotlightCode {
 	});
 
 	public showRuntime = computed((): number => {
-
 		if (this.show.value?.runtime) {
 			return this.show.value.runtime;
 		}

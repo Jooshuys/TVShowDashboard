@@ -46,7 +46,7 @@ describe("dropdown", () => {
 		[LoadingStatuses.ACTIVE, true],
 		[LoadingStatuses.INACTIVE, false],
 		[LoadingStatuses.ERROR, false]
-	])("isLoading: when loading process status %#, returns expected boolean.", (status, expected) => {
+	])("isLoading: when loading process status %#, gives expected boolean.", (status, expected) => {
 		mocksStore.updateLoadingProcessStatus(status);
 		expect(code.isLoading.value).toEqual(expected);
 	});
@@ -55,7 +55,7 @@ describe("dropdown", () => {
 		[LoadingStatuses.ERROR, true],
 		[LoadingStatuses.ACTIVE, false],
 		[LoadingStatuses.INACTIVE, false]
-	])("isLoadingFailure: when loading process status %#, returns expected boolean.", (status, expected) => {
+	])("isLoadingFailure: when loading process status %#, gives expected boolean.", (status, expected) => {
 		mocksStore.updateLoadingProcessStatus(status);
 		expect(code.isLoadingFailure.value).toEqual(expected);
 	});
@@ -68,7 +68,7 @@ describe("dropdown", () => {
 	test.each([
 		[LoadingStatuses.ACTIVE, DEFAULT_SEARCH_RESULTS_COUNT],
 		[LoadingStatuses.INACTIVE, 2]
-	])("shows: when loading status %#, returns expected number of results.", (status, expectedCount) => {
+	])("shows: when loading status %#, gives expected number of results.", (status, expectedCount) => {
 		mocksStore.updateLoadingProcessStatus(status);
 		const shows = code.shows.value;
 		expect(shows.length).toEqual(expectedCount);
