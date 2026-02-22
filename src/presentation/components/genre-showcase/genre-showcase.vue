@@ -14,6 +14,7 @@
 				ref="scrollTrack"
 			>
 				<button
+					v-if="!isLoading"
 					class="GenreShowcaseNavButton ButtonLeft"
 					aria-label="Scroll left"
 					ref="scrollButtonLeft"
@@ -29,6 +30,7 @@
 				/>
 
 				<button
+					v-if="!isLoading"
 					class="GenreShowcaseNavButton ButtonRight"
 					aria-label="Scroll right"
 					ref="scrollButtonRight"

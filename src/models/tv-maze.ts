@@ -13,7 +13,7 @@ type TVMazeItem = {
 			name: string;
 		};
 	} | null;
-	premiered: string;
+	premiered: string | null;
 	rating: {
 		average: number | null;
 	};

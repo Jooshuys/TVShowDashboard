@@ -1,14 +1,12 @@
 @use "@/presentation/styles/_colors.scss" as *;
 @use "@/presentation/styles/_z-index.scss" as *;
 
-$scroll-thumb: #f00;
-$scroll-track: #f1f1f1;
-
 .GenreTitle {
 	display: inline-block;
 	background-color: $BrandAmber;
 	font-weight: bold;
 	min-width: 30rem;
+	min-height: 4rem;
 	padding: 0.75rem 5rem;
 	font-size: 1.5rem;
 	margin-left: 3rem;

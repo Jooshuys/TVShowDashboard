@@ -20,6 +20,19 @@
 			margin-top: 0;
 		}
 
+		&.GenreTitle {
+			background: transparent;
+		}
+
+		&.ShowCard {
+			background: transparent;
+
+			&:hover {
+				margin-top: 1rem;
+				margin-bottom: 0;
+			}
+		}
+
 		&.SpotlightImage {
 			width: 100%;
 			height: 15rem;
@@ -43,5 +56,9 @@
 
 	& + .GenreCardsControlsWrapper {
 		overflow: hidden;
+	}
+
+	& + .SpotlightContentWrapper {
+		background: transparent;
 	}
 }

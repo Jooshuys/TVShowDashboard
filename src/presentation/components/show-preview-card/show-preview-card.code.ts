@@ -15,6 +15,10 @@ export default class ShowPreviewCardCode {
 		return loadingProcess?.status === LoadingStatuses.ACTIVE;
 	});
 
+	public showYear = computed((): string => {
+		return this.show?.premiered?.substring(0, 4) ?? "";
+	});
+
 	public handleNavigationItemClick(event: PointerEvent) {
 		routePresenter.handleNavigationItemClick(event);
 	}

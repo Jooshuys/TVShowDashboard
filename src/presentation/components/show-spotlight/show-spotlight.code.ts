@@ -5,6 +5,10 @@ import store from "@/store";
 
 export default class ShowSpotlightCode {
 
+	public showYear = computed((): string => {
+		return this.show.value?.premiered?.substring(0, 4) ?? "";
+	});
+
 	public isLoading = computed((): boolean => {
 		const loadingProcess = store.getters.loadingProcessOfType(LoadingTypes.GENRE_CLUSTER);
 		return loadingProcess?.status === LoadingStatuses.ACTIVE;

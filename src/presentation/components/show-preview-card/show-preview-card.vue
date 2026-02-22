@@ -34,8 +34,11 @@
 				<div class="ShowCardContent">
 
 					<div class="ShowCardMeta">
-						<span class="ShowCardDetailItem">
-							{{ show.premiered.substr(0, 4) }}
+						<span
+							v-if="showYear"
+							class="ShowCardDetailItem"
+						>
+							{{ showYear }}
 						</span>
 						<span
 							v-if="show.network"

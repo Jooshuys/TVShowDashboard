@@ -6,4 +6,3 @@
 </template>
 
 <script lang="ts" src="./show-details.ts" />
-<style lang="scss" src="./show-details.scss" />

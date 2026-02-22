@@ -1,3 +1,5 @@
+import { computed } from "vue";
+import { Router } from "@/models/router";
 import { LoadingStatuses, LoadingTypes } from "@/models/loading";
 import { SearchResult } from "@/models/search";
 import { TVMazeItem, TVMazeSearchItem } from "@/models/tv-maze";
@@ -6,6 +8,10 @@ import store from "@/store";
 class TVMazeService {
 	private apiUrl = 'https://api.tvmaze.com';
 
+	private router = computed((): Router => {
+		return store.getters.router();
+	});
+
 	public async retrieveShowsThatMatchName(query: string): Promise<SearchResult[]> {
 		let showsAsSearchResults: SearchResult[] = []
 		try {
@@ -13,11 +19,12 @@ class TVMazeService {
 			const response = await fetch(`${this.apiUrl}/search/shows?q=${query}`);
 			const items: TVMazeSearchItem[] = await response.json();
 			showsAsSearchResults = items
+				.filter(item => item.show.id !== this.router.value.props.id)
 				.map(item => ({
 					id: item.show.id,
 					genres: item.show.genres,
 					name: item.show.name,
-					premiered: item.show.premiered
+					premiered: item.show.premiered ?? ""
 				}));
 			store.mutations.updateLoadingStatusOfType(LoadingTypes.SEARCH, LoadingStatuses.INACTIVE);
 		} catch (error) {

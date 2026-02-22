@@ -12,6 +12,10 @@ export default class DropdownItemCode {
 		public show: Ref<SearchResult>
 	) {}
 
+	public showYear = computed((): string => {
+		return this.show.value.premiered?.substring(0, 4) ?? '';
+	});
+
 	public isLoading = computed((): boolean => {
 		const loadingProcess = store.getters.loadingProcessOfType(LoadingTypes.SEARCH);
 		return loadingProcess?.status === LoadingStatuses.ACTIVE;

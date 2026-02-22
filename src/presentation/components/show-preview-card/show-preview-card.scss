@@ -63,16 +63,35 @@
 
 	.ShowCardContent {
 		padding: 0.5rem;
+		position: relative;
+		white-space: nowrap;
+		
+		&::after {
+			content: "";
+			position: absolute;
+			right: 0;
+			top: 0;
+			pointer-events: none;
+			width: 3rem;
+			height: 40%;
+			background: linear-gradient(
+				to left,
+				rgba($BrandGreyL, 1),
+				rgba($BrandGreyL, 0)
+			);
+		}
 	}
 
 	.ShowCardDetailItem {
 		display: inline-block;
+		font-size: 13px;
 		font-style: italic;
 		margin: 0 0 0.25rem;
+		color: $BrandGreyD;
 
 		& + .ShowCardDetailItem::before {
-			content: '/';
-			margin: 0 0.5rem;
+			content: '•';
+			margin: 0 0.25rem;
 		}
 	}
 

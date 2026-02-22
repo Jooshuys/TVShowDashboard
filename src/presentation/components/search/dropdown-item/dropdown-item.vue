@@ -8,7 +8,10 @@
 			class="DropdownItem"
 			@click="handleNavigationItemClick"
 		>
-			{{ show.name }} ({{ show.premiered.substring(0, 4) }})
+			{{ show.name }}
+			<span v-if="showYear">
+				({{ showYear }})
+			</span>
 		</a>
 	</LoadingWrapper>
 </template>

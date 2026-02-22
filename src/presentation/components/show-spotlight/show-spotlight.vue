@@ -44,7 +44,7 @@
 						v-if="show"
 						class="SpotlightContentDetails"
 					>
-						<div v-if="show.rating">
+						<div v-if="show.rating.average">
 							<label class="SpotlightLabel">
 								Rating:
 							</label>
@@ -65,11 +65,11 @@
 							{{ show.runtime ? show.runtime : show.averageRuntime }} minutes
 						</div>
 
-						<div>
+						<div v-if="showYear">
 							<label class="SpotlightLabel">
 								Year:
 							</label>
-							{{ show.premiered.substring(0, 4) }}
+							{{ showYear }}
 						</div>
 
 						<template v-if="show.network">
