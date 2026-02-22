@@ -49,10 +49,6 @@
 		}
 	}
 
-	.SpotlightLabel {
-		font-weight: bold;
-	}
-
 	.SpotlightContentDetails {
 		width: 100%;
 		flex: 0 0 auto;
@@ -60,6 +56,24 @@
 		padding: 1rem;
 		background-color: rgba($White, 0.85);
 		align-self: flex-start;
+
+		dt {
+			float: left;
+			font-weight: bold;
+			margin-right: 0.5rem;
+		}
+
+		dd {
+			margin: 0 0 0.5rem 0;
+			display: inline;
+		}
+
+		// Clear floats after each pair.
+		dt + dd::after {
+			content: "";
+			display: block;
+			clear: both;
+		}
 	}
 }
 

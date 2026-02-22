@@ -3,9 +3,13 @@
 		<a
 			href="/overview"
 			class="HomeButton"
+			aria-label="Go to homepage"
 			@click="handleNavigationItemClick"
 		>
-			<i class="fa-solid fa-clapperboard"></i>
+			<i
+				class="fa-solid fa-clapperboard"
+				aria-hidden="true"
+			></i>
 		</a>
 		<SearchInput />
 	</header>

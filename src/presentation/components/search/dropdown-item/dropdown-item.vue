@@ -6,6 +6,7 @@
 		<a
 			:href="`/show-details/${show.id}`"
 			class="DropdownItem"
+			role="option"
 			@click="handleNavigationItemClick"
 		>
 			{{ show.name }}

@@ -1,10 +1,13 @@
+@use "@/presentation/styles/_colors.scss" as *;
+@use "@/presentation/styles/_z-index.scss" as *;
+
 .PageWrapper {
 	display: flex;
 	flex-direction: column;
 	min-height: 100vh;
 }
 
-.MainContent {
+#MainContent {
 	flex: 1;
 }
 

@@ -1,6 +1,7 @@
 import { computed } from "vue";
 import { TVMazeItem } from "@/models/tv-maze";
 import { LoadingStatuses, LoadingTypes } from "@/models/loading";
+import sanitizePresenter from "@/presenters/sanitize-presenter";
 import store from "@/store";
 
 export default class ShowSpotlightCode {
@@ -28,9 +29,34 @@ export default class ShowSpotlightCode {
 
 	public showGenresCommaSeparated = computed((): string => {
 		if (!this.show.value) {
-			return '';
+			return "";
 		}
 
-		return this.show.value.genres.join(', ');
+		return this.show.value.genres.join(", ");
+	});
+
+	public showRating = computed((): string => {
+		return this.show.value?.rating.average?.toFixed(1) ?? "";
+	});
+
+	public showRuntime = computed((): number => {
+
+		if (this.show.value?.runtime) {
+			return this.show.value.runtime;
+		}
+
+		if (this.show.value?.averageRuntime) {
+			return this.show.value.averageRuntime;
+		}
+
+		return 0;
+	})
+
+	public sanitizedShowDescription = computed((): string => {
+		if (!this.show.value) {
+			return "";
+		}
+
+		return sanitizePresenter.sanitize(this.show.value.summary);
 	});
 }

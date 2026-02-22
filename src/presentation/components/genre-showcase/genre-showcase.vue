@@ -3,24 +3,36 @@
 		:classes="['GenreTitle']"
 		:isLoading="isLoading"
 	>
-		<p class="GenreTitle RoundedBlock">
+		<h2
+			:id="`Genre-${genreName}`"
+			class="GenreTitle RoundedBlock"
+		>
 			{{ genreName }}
-		</p>
+		</h2>
 	</LoadingWrapper>
 	<div class="GenreCardsControlsWrapper">
-		<div
+		<section
+			:id="`GenreScrollTrack-${genreName}`"
 			class="GenreCardsContentWrapper"
 			ref="scrollTrack"
+			:aria-labelledby="`Genre-${genreName}`"
+			role="listbox"
+			aria-orientation="horizontal"
+			tabindex="0"
 		>
 			<button
 				v-if="!isLoading"
 				class="GenreShowcaseNavButton ButtonLeft"
-				aria-label="Scroll left"
 				ref="scrollButtonLeft"
+				aria-label="Scroll left"
+				:aria-controls="`GenreScrollTrack-${genreName}`"
 				@click="scrollOnTrack(false)"
 				:disabled="isButtonScrollLeftDisabled"
 			>
-				<i class="fa-solid fa-circle-chevron-left"></i>
+				<i
+					class="fa-solid fa-circle-chevron-left"
+					aria-hidden="true"
+				></i>
 			</button>
 			
 			<ShowPreviewCard
@@ -33,13 +45,17 @@
 				v-if="!isLoading"
 				class="GenreShowcaseNavButton ButtonRight"
 				aria-label="Scroll right"
+				:aria-controls="`GenreScrollTrack-${genreName}`"
 				ref="scrollButtonRight"
 				@click="scrollOnTrack(true)"
 				:disabled="isButtonScrollRightDisabled"
 			>
-				<i class="fa-solid fa-circle-chevron-right"></i>
+				<i
+					class="fa-solid fa-circle-chevron-right"
+					aria-hidden="true"
+				></i>
 			</button>
-		</div>
+		</section>
 	</div>
 </template>
 

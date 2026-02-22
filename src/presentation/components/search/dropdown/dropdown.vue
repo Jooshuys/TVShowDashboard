@@ -1,5 +1,9 @@
 <template>
-	<div class="DropdownContainer RoundedBlock">
+	<div
+		id="SearchDropdown"
+		class="RoundedBlock"
+		role="listbox"
+	>
 		<p
 			v-if="isLoadingFailure"
 			class="SearchFailedMessage"

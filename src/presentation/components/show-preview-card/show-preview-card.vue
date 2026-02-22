@@ -7,6 +7,8 @@
 		<a
 			:href="`/show-details/${show.id}`"
 			class="ShowCardLink"
+			:aria-label="cardSummary"
+			tabindex="-1"
 			@click="handleNavigationItemClick"
 		>
 			<article class="ShowCard RoundedBlock">
@@ -21,12 +23,16 @@
 						class="ShowCardImage"
 					/>
 					<span
-						v-if="show.rating"
+						v-if="showRating"
 						class="ShowCardRating"
+						:aria-label="`Rating: ${showRating} out of 10`"
 					>
-						<i class="fa-solid fa-star ShowCardRatingIcon"></i>
+						<i
+							class="fa-solid fa-star ShowCardRatingIcon"
+							aria-hidden="true"
+						></i>
 						<span class="ShowCardRatingScore">
-							{{ show.rating.average?.toFixed(1) }}
+							{{ showRating }}
 						</span>
 					</span>
 				</div>
@@ -41,14 +47,17 @@
 							{{ showYear }}
 						</span>
 						<span
-							v-if="show.network"
+							v-if="showNetworkName"
 							class="ShowCardDetailItem"
 						>
-							{{ show.network.name }}
+							{{ showNetworkName }}
 						</span>
 					</div>
 
-					<ul class="ShowCardGenres">
+					<ul
+						class="ShowCardGenres"
+						aria-label="Genres"
+					>
 						<li
 							v-for="genre in show.genres"
 							:key="`show-genre-${genre}-${show.id}`"
@@ -60,7 +69,7 @@
 
 					<p
 						class="ShowCardSummary"
-						v-html="show.summary"
+						v-html="sanitizedShowDescription"
 					></p>
 				</div>
 			</article>

@@ -1,0 +1,19 @@
+@use "@/presentation/styles/_colors.scss" as *;
+
+.Introduction {
+	background: $BrandGreyL;
+	color: $BrandBlack;
+	width: 21rem;
+	padding: 1rem;
+	margin: 2rem 3rem 0;
+
+	h1 {
+		font-size: 1.5rem;
+		margin: 0 0 0.5rem;
+		font-weight: bold;
+	}
+
+	p {
+		margin: 0;
+	}
+}

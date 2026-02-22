@@ -1,7 +1,7 @@
 @use "@/presentation/styles/_colors.scss" as *;
 @use "@/presentation/styles/_z-index.scss" as *;
 
-.DropdownContainer {
+#SearchDropdown {
 	position: absolute;
 	left: 0;
 	z-index: $ThirdFloor;

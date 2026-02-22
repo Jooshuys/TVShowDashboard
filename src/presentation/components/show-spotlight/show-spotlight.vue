@@ -16,12 +16,12 @@
 				:classes="['SpotlightTitle']"
 				:isLoading="isLoading"
 			>
-				<h2	
+				<h1
 					v-if="show"
 					class="SpotlightTitle"
 				>
 					{{ show.name }}
-				</h2>
+				</h1>
 			</LoadingWrapper>
 			<div class="SpotlightContent">
 				<LoadingWrapper
@@ -31,7 +31,7 @@
 					<p
 						v-if="show"
 						class="SpotlightSummary"
-						v-html="show.summary"
+						v-html="sanitizedShowDescription"
 					></p>
 				</LoadingWrapper>
 				<LoadingWrapper
@@ -42,56 +42,32 @@
 						v-if="show"
 						class="SpotlightContentDetails"
 					>
-						<div v-if="show.rating.average">
-							<label class="SpotlightLabel">
-								Rating:
-							</label>
-								{{ show.rating.average }} / 10
-						</div>
-
-						<div>
-							<label class="SpotlightLabel">
-								Genres:
-							</label>
-							{{ showGenresCommaSeparated }}
-						</div>
-
-						<div>
-							<label class="SpotlightLabel">
-								Average runtime:
-							</label>
-							{{ show.runtime ? show.runtime : show.averageRuntime }} minutes
-						</div>
-
-						<div v-if="showYear">
-							<label class="SpotlightLabel">
-								Year:
-							</label>
-							{{ showYear }}
-						</div>
-
-						<template v-if="show.network">
-							<div>
-								<label class="SpotlightLabel">
-									Network:
-								</label>
-								{{ show.network.name }}
-							</div>
-							
-							<div>
-								<label class="SpotlightLabel">
-									Country:
-								</label>
-								{{ show.network.country.name }}
-							</div>
+						<template v-if="showRating">
+							<dt>Rating:</dt>
+							<dd>{{ showRating }} / 10</dd>
 						</template>
 
-						<div>
-							<label class="SpotlightLabel">
-								Language:
-							</label>
-							{{ show.language }}
-						</div>
+						<dt>Genres:</dt>
+						<dd>{{ showGenresCommaSeparated }}</dd>
+
+						<dt>Average runtime:</dt>
+						<dd>{{ showRuntime }} minutes</dd>
+
+						<template v-if="showYear">
+							<dt>Year:</dt>
+							<dd>{{ showYear }}</dd>
+						</template>
+
+						<template v-if="show.network">
+							<dt>Network:</dt>
+							<dd>{{ show.network.name }}</dd>
+							
+							<dt>Country:</dt>
+							<dd>{{ show.network.country.name }}</dd>
+						</template>
+
+						<dt>Language:</dt>
+						<dd>{{ show.language }}</dd>
 					</div>
 				</LoadingWrapper>
 			</div>

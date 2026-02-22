@@ -1,7 +1,10 @@
 <template>
 	<div class="PageWrapper">
 		<Header />
-		<main class="MainContent LayoutBlock">
+		<main
+			id="MainContent"
+			class="LayoutBlock"
+		>
 			<component :is="CurrentComponent" />
 		</main>
 		<Footer />

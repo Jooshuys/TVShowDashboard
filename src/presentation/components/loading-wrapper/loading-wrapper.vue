@@ -1,10 +1,11 @@
 <template>
 	<component
+		v-if="isLoading"
 		:class="[
 			{ 'LoadingWrapper': isLoading }
 		]"
 		:is="tag"
-		v-if="isLoading"
+		:aria-busy="isLoading"
 	>
 		<div :class="[
 			...classes,

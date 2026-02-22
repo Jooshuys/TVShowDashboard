@@ -2,12 +2,52 @@
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
-		<link rel="icon" type="image/svg+xml" href="/vite.svg" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1.0"
+		/>
+		<meta
+			name="description"
+			content="Dashboard for browsing TV shows."
+		/>
 		<title>TV Show Dashboard</title>
+
+		<style>
+			.SkipLink {
+				position: absolute;
+				top: -10rem;
+				left: 0;
+				background: #009287;
+				color: #fff;
+				border: 2px solid #fff;
+				padding: 0.5rem;
+				z-index: 100;
+				text-decoration: none;
+			}
+
+			.SkipLink:hover {
+				background: #044d44;
+			}
+
+			.SkipLink:focus {
+				top: 4.5rem;
+			}
+		</style>
 	</head>
 	<body>
-		<div id="app"></div>
-		<script type="module" src="/src/main.ts"></script>
+		<a
+			href="#MainContent"
+			class="SkipLink RoundedBlock"
+		>
+			Skip to main content
+		</a>
+		<div
+			id="app"
+			role="application"
+		></div>
+		<script
+			type="module"
+			src="/src/main.ts"
+		></script>
 	</body>
 </html>

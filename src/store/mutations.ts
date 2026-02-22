@@ -1,6 +1,7 @@
 import { Mutations } from "@/models/store";
 import routePresenter from "@/presenters/route-presenter";
 import state from "./state";
+import { Routes } from "@/models/router";
 
 const mutations: Mutations = {
 	addShowsToGenreCluster: (shows) => {
@@ -41,7 +42,7 @@ const mutations: Mutations = {
 				id: id ? id : 0
 			}
 		};
-		history.pushState({}, '', url);
+		history.pushState({}, "", url);
 	},
 	updateLoadingStatusOfType: (type, status) => {
 		if (!state.loadingCluster[type]) {
