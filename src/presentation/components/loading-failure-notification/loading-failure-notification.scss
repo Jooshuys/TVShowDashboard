@@ -1,10 +1,14 @@
+@use "@/presentation/styles/_colors.scss" as *;
+
 .LoadingFailureNotification {
 	width: 20rem;
 	margin: 0 auto;
 	text-align: center;
 	margin-top: 5rem;
+	color: $White;
 }
 
 .LoadingFailureIcon {
 	font-size: 7rem;
+	color: $BrandAmber;
 }
