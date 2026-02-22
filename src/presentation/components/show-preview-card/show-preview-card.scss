@@ -26,7 +26,9 @@
 
 	.ShowCardImageWrapper {
 		position: relative;
-		height: 295px;
+		height: 180px;
+		object-fit: cover;
+		overflow: hidden;
 		font-size: 0;
 	}
 
@@ -120,8 +122,13 @@
 }
 
 /* Tablet styles */
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 768px) {
+	.ShowCard {
 
+		.ShowCardImageWrapper {
+			height: 295px;
+		}
+	}
 }
 
 /* Desktop */

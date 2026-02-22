@@ -22,10 +22,13 @@
 
 		&.GenreTitle {
 			background: transparent;
+			margin-left: 3rem;
 		}
 
 		&.ShowCard {
 			background: transparent;
+			margin-top: 0;
+			margin-bottom: 1rem;
 
 			&:hover {
 				margin-top: 1rem;
