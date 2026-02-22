@@ -10,7 +10,7 @@ vi.mock("dompurify", () => ({
 
 import sanitizePresenter from "@/presenters/sanitize-presenter";
 
-describe("sanitize-presenter.ts", () => {
+describe("sanitize presenter", () => {
 
 	afterEach(() => {
 		vi.clearAllMocks();

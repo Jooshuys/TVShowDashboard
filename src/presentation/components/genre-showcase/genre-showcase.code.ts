@@ -31,7 +31,7 @@ export default class GenreShowcaseCode {
 	});
 
 	public isButtonScrollRightDisabled = computed((): boolean => {
-		return this.snappedIndex.value >= this.showsOfGenre.value.length - this.amountOfCardsThatFit ;
+		return this.snappedIndex.value >= this.showsOfGenre.value.length - this.amountOfCardsThatFit;
 	});
 
 	public showsOfGenre = computed((): TVMazeItem[] => {
