@@ -34,7 +34,7 @@ export default class GenreOverviewCode {
 		const options = {
 			root: null,
 			rootMargin: "200px",
-			threshold: 0,
+			threshold: 0
 		};
 
 		this.observer = new IntersectionObserver((entries) => {

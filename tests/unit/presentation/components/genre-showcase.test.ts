@@ -30,7 +30,7 @@ vi.mock("@/store", () => ({
 
 let code: GenreShowcaseCode;
 
-describe("genre-showcase.ts", () => {
+describe("genre showcase", () => {
 	beforeEach(() => {
 		code = new GenreShowcaseCode("Action");
 	});
