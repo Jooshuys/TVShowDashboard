@@ -44,12 +44,13 @@ const mutations: Mutations = {
 		};
 		history.pushState({}, "", url);
 	},
-	updateLoadingStatusOfType: (type, status) => {
+	updateLoadingStatusOfType: (type, status, errorMessage = "") => {
 		if (!state.loadingCluster[type]) {
 			return;
 		}
 
 		state.loadingCluster[type].status = status;
+		state.loadingCluster[type].errorMessage = errorMessage;
 	}
 };
 

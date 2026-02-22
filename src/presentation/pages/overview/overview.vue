@@ -1,5 +1,6 @@
 <template>
 	<section
+		v-if="!isLoadingFailure"
 		class="Introduction RoundedBlock"
 		aria-labelledby="OverviewHeading"
 	>

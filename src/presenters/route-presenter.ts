@@ -66,7 +66,7 @@ class RoutePresenter {
 	}
 
 	public retrieveRelevantUrlPart(url: string): string {
-		const urlIsRootRelative = url[0] === '/';
+		const urlIsRootRelative = url[0] === "/";
 		if (urlIsRootRelative) {
 			return url;
 		}
@@ -74,7 +74,7 @@ class RoutePresenter {
 		const urlSegments = url.split(this.githubApplicationName);
 		const relevantUrlPart = urlSegments[1];
 		if (!relevantUrlPart) {
-			return '';
+			return "";
 		}
 
 		return relevantUrlPart;

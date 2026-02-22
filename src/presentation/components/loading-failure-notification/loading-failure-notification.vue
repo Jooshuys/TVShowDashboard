@@ -10,9 +10,10 @@
 			aria-hidden="true"
 		></i>
 		<p class="LoadingFailureMessage">
-			Something went wrong while loading the content. Please refresh the page.
+			{{ loadingProcess?.errorMessage }}
 		</p>
 	</div>
 </template>
 
+<script lang="ts" src="./loading-failure-notification.ts"></script>
 <style lang="scss" src="./loading-failure-notification.scss" />

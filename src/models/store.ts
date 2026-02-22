@@ -14,7 +14,7 @@ type Getters = {
 type Mutations = {
 	addShowsToGenreCluster: (shows: TVMazeItem[]) => void;
 	navigateToRoute: (url: string) => void;
-	updateLoadingStatusOfType: (type: LoadingTypes, status: LoadingStatuses) => void;
+	updateLoadingStatusOfType: (type: LoadingTypes, status: LoadingStatuses, errorMessage?: string) => void;
 }
 
 type State = {

@@ -28,7 +28,11 @@ class TVMazeService {
 				}));
 			store.mutations.updateLoadingStatusOfType(LoadingTypes.SEARCH, LoadingStatuses.INACTIVE);
 		} catch (error) {
-			store.mutations.updateLoadingStatusOfType(LoadingTypes.SEARCH, LoadingStatuses.ERROR);
+			store.mutations.updateLoadingStatusOfType(
+				LoadingTypes.SEARCH,
+				LoadingStatuses.ERROR,
+				"Something went wrong. Please refresh the page."
+			);
 			console.error(error);
 		}
 
@@ -48,7 +52,11 @@ class TVMazeService {
 			store.mutations.addShowsToGenreCluster(combinedResults);
 			store.mutations.updateLoadingStatusOfType(LoadingTypes.GENRE_CLUSTER, LoadingStatuses.INACTIVE);
 		} catch (error) {
-			store.mutations.updateLoadingStatusOfType(LoadingTypes.GENRE_CLUSTER, LoadingStatuses.ERROR);
+			store.mutations.updateLoadingStatusOfType(
+				LoadingTypes.GENRE_CLUSTER,
+				LoadingStatuses.ERROR,
+				"Something went wrong while loading the shows. Please refresh the page."
+			);
 			console.error(error);
 		}
 	}
@@ -65,7 +73,11 @@ class TVMazeService {
 			store.mutations.addShowsToGenreCluster([show]);
 			store.mutations.updateLoadingStatusOfType(LoadingTypes.GENRE_CLUSTER, LoadingStatuses.INACTIVE);
 		} catch (error) {
-			store.mutations.updateLoadingStatusOfType(LoadingTypes.GENRE_CLUSTER, LoadingStatuses.ERROR);
+			store.mutations.updateLoadingStatusOfType(
+				LoadingTypes.GENRE_CLUSTER,
+				LoadingStatuses.ERROR,
+				"Something went wrong while loading this show. Please refresh the page."
+			);
 			console.error(error);
 		}
 	}

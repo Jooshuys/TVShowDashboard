@@ -22,7 +22,7 @@ export default class DropdownCode {
 		return this.loadingProcess.value?.status === LoadingStatuses.ERROR;
 	});
 
-	private loadingProcess = computed((): LoadingProcess | undefined => {
+	public loadingProcess = computed((): LoadingProcess | undefined => {
 		return store.getters.loadingProcessOfType(LoadingTypes.SEARCH);
 	});
 

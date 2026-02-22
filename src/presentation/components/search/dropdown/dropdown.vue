@@ -8,7 +8,7 @@
 			v-if="isLoadingFailure"
 			class="SearchFailedMessage"
 		>
-			Something went wrong. Please refresh the page.
+			{{ loadingProcess?.errorMessage }}
 		</p>
 		<p
 			v-else-if="!shows.length && searchTerm"
