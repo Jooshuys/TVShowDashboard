@@ -35,22 +35,25 @@
 
 		&.SpotlightImage {
 			width: 100%;
-			height: 15rem;
+			height: 40vh;
 		}
 
 		&.SpotlightTitle {
-			height: 3rem;
+			height: 10vh;
 			width: 30rem;
+			background: transparent;
 		}
 
 		&.SpotlightSummary {
-			height: 10rem;
+			height: 20vh;
 			width: 70vw;
+			background: transparent;
 		}
 
 		&.SpotlightContentDetails {
-			height: 10rem;
+			height: 20vh;
 			width: 25vw;
+			background: transparent;
 		}
 	}
 

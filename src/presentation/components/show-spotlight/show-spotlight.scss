@@ -1,3 +1,5 @@
+@use "@/presentation/styles/_colors.scss" as *;
+
 .SpotlightWrapper {
 	position: relative;
 	overflow: hidden;
@@ -17,23 +19,29 @@
 	position: absolute;
 	bottom: 0;
 	left: 0;
-	background-color: rgba(255, 255, 255, 0.7);
 	padding: 2rem;
 	width: 100%;
 
 	.SpotlightTitle {
+		display: inline-block;
 		font-size: 3rem;
 		margin: 0 0 1rem;
+		background-color: $BrandAmber;
+		padding: 1rem 3rem;
 	}
 }
 
 .SpotlightContent {
 	display: flex;
 	justify-content: space-between;
+	flex: flex-start;
 
 	.SpotlightSummary {
 		max-width: 42rem;
 		margin-bottom: 0;
+		padding: 1rem;
+		background-color: rgba($White, 0.7);
+		align-self: flex-start;
 
 		p:first-of-type {
 			margin-top: 0;
@@ -51,5 +59,8 @@
 	.SpotlightContentDetails {
 		flex: 0 0 auto;
 		margin-left: 2rem;
+		padding: 1rem;
+		background-color: rgba($White, 0.7);
+		align-self: flex-start;
 	}
 }
