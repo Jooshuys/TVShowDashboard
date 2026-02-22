@@ -31,7 +31,7 @@ describe("loading failure notification", () => {
 		vi.clearAllMocks();
 	});
 
-	it("loadingProcess: when loading status %#, give expected value.", () => {
+	it("loadingProcess: when computed property called, give expected value.", () => {
 		expect(code.loadingProcess.value).toEqual({
 			status: LoadingStatuses.INACTIVE,
 			errorMessage: ""
