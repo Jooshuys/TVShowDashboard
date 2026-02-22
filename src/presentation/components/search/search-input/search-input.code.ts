@@ -1,8 +1,10 @@
 import { ref, Ref } from "vue";
+import { Emits } from "@/models/emits";
 import { SearchResult } from "@/models/search";
 import tvMazeService from "@/services/tv-maze-service";
 
 export default class SearchInputCode {
+	public emitResultClicked = Emits.RESULT_CLICKED;
 	public searchInput: Ref<HTMLInputElement | null> = ref(null);
 	public searchTerm: Ref<string> = ref("");
 	public searchResults = ref<SearchResult[]>([]);

@@ -23,6 +23,6 @@ export default class DropdownItemCode {
 	
 	public handleNavigationItemClick(event: PointerEvent) {
 		routePresenter.handleNavigationItemClick(event);
-		this.emit(Emits.ON_CLICK);
+		this.emit(Emits.RESULT_CLICKED);
 	}
 }

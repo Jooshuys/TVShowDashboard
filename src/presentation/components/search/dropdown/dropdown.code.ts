@@ -6,6 +6,7 @@ import { Emits } from "@/models/emits";
 import store from "@/store";
 
 export default class DropdownCode {
+	public emitResultClicked = Emits.RESULT_CLICKED;
 
 	constructor(
 		private emit: (emit: Emits) => void,
@@ -38,6 +39,6 @@ export default class DropdownCode {
 	});
 
 	public emitClick(): void {
-		this.emit(Emits.ON_CLICK);
+		this.emit(Emits.RESULT_CLICKED);
 	}
 }

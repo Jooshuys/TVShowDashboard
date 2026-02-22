@@ -29,7 +29,7 @@
 			v-if="showDropdown"
 			:searchTerm="searchTerm"
 			:searchResults="searchResults"
-			@onClick="updateDropdownVisibility(false, true)"
+			@[emitResultClicked]="updateDropdownVisibility(false, true)"
 		/>
 	</div>
 </template>

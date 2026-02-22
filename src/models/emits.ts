@@ -1,5 +1,5 @@
 enum Emits {
-	ON_CLICK = "onClick"
+	RESULT_CLICKED = "resultClicked"
 }
 
 export { Emits };

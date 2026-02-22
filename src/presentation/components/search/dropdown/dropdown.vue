@@ -12,15 +12,12 @@
 		>
 			No results found. Please adjust your search.
 		</p>
-		<template
+		<DropdownItem
 			v-for="(show, index) in shows"
 			:key="`dropdown-item-${index}`"
-		>
-			<DropdownItem
-				:show="show"
-				@onClick="emitClick"
-			/>
-		</template>
+			:show="show"
+			@[emitResultClicked]="emitClick"
+		/>
 	</div>
 </template>
 
