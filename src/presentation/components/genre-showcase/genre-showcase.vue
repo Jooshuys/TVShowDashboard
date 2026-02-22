@@ -18,6 +18,7 @@
 				aria-label="Scroll left"
 				ref="scrollButtonLeft"
 				@click="scrollOnTrack(false)"
+				:disabled="isButtonScrollLeftDisabled"
 			>
 				<i class="fa-solid fa-circle-chevron-left"></i>
 			</button>
@@ -34,6 +35,7 @@
 				aria-label="Scroll right"
 				ref="scrollButtonRight"
 				@click="scrollOnTrack(true)"
+				:disabled="isButtonScrollRightDisabled"
 			>
 				<i class="fa-solid fa-circle-chevron-right"></i>
 			</button>

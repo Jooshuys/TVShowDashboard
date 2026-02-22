@@ -84,6 +84,11 @@
 	&.ButtonRight {
 		right: 0.5rem;
 	}
+
+	&:disabled {
+		color: $BrandGreyD;
+		cursor: not-allowed;
+	}
 }
 
 @media (min-width: 768px) {

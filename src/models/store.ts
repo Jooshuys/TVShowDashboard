@@ -7,7 +7,7 @@ type Getters = {
 	genresOrderedBySize: () => string[];
 	loadingProcessOfType: (type: LoadingTypes) => LoadingProcess | undefined;
 	showForCurrentRoute: () => TVMazeItem | undefined;
-	showsOfGenre: (genre: string) => TVMazeItem[];
+	showsOfGenre: (genre: string, amountOfShows: number) => TVMazeItem[];
 	router: () => Router;
 }
 

@@ -1,5 +1,4 @@
 import state from "./state";
-import { DEFAULT_SHOWS_PER_GENRE } from "@/static/defaults";
 import { Getters } from "@/models/store";
 
 const getters: Getters = {
@@ -26,9 +25,9 @@ const getters: Getters = {
 			return relevantItem;
 		}
 	},
-	showsOfGenre: (genre) => {
+	showsOfGenre: (genre, amountOfShows) => {
 		const showsOfGenre = state.genreCluster[genre];
-		return showsOfGenre?.slice(0, DEFAULT_SHOWS_PER_GENRE) ?? [];
+		return showsOfGenre?.slice(0, amountOfShows) ?? [];
 	},
 	router: () => state.router
 }
