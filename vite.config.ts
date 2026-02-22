@@ -13,6 +13,7 @@ export default defineConfig({
 		globals: true,
 		environment: "jsdom",
 		coverage: {
+			provider: "v8",
 			include: [
 				"src/presentation/**/*.code.ts",
 				"src/infrastructure/*.ts",
@@ -20,11 +21,10 @@ export default defineConfig({
 				"src/services/*.ts",
 				"src/store/*.ts"
 			],
-			provider: "v8",
+			reportsDirectory: "tests/coverage-results",
 			reporter: [
 				["text", { maxCols: 200 }]
-			],
-			reportsDirectory: "tests/coverage-results"
+			]
 		}
 	}
 });
