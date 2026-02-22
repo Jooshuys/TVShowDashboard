@@ -8,16 +8,5 @@ export default defineConfig({
 		alias: {
 			"@": path.resolve(__dirname, "src")
 		}
-	},
-	build: {
-		rollupOptions: {
-			onwarn(warning, warn) {
-				if (warning.message.includes("source-map-js")) {
-					return;
-				}
-
-				warn(warning);
-			}
-		}
 	}
 });
