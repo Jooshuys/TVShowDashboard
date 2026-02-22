@@ -1,4 +1,3 @@
-import { Emits } from "@/models/emits";
 import SearchInputCode from "@/presentation/components/search/search-input/search-input.code";
 
 const mocksTVMazeService: any = vi.hoisted(() => {
@@ -23,7 +22,7 @@ let code: SearchInputCode;
 describe("search input", () => {
 	beforeEach(() => {
 		code = new SearchInputCode();
-		vi.useFakeTimers(); // for debounce timing
+		vi.useFakeTimers();
 	});
 
 	afterEach(() => {
@@ -32,7 +31,7 @@ describe("search input", () => {
 		vi.useRealTimers();
 	});
 
-	test("mounted: when called, adds the expected event listener.", () => {
+	it("mounted: when called, adds the expected event listener.", () => {
 		const addEventListener: any = vi.spyOn(document, "addEventListener");
 		const context = {
 			boundHandleOutsideClick: vi.fn()
@@ -46,7 +45,7 @@ describe("search input", () => {
 		expect(context.boundHandleOutsideClick).toHaveBeenCalledTimes(1);
 	});
 
-	test("unmounted: when called, removes the expected event listener.", () => {
+	it("unmounted: when called, removes the expected event listener.", () => {
 		const removeEventListener: any = vi.spyOn(document, "removeEventListener");
 		const context = {
 			boundHandleOutsideClick: vi.fn()
