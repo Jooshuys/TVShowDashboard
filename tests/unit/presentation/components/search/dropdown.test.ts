@@ -60,7 +60,7 @@ describe("dropdown", () => {
 		expect(code.isLoadingFailure.value).toEqual(expected);
 	});
 
-	test("loadingProcess: returns current loading process from store.", () => {
+	it("loadingProcess: returns current loading process from store.", () => {
 		mocksStore.updateLoadingProcessStatus(LoadingStatuses.ACTIVE);
 		expect(code.loadingProcess.value?.status).toEqual(LoadingStatuses.ACTIVE);
 	});
