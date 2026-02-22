@@ -17,6 +17,7 @@
 		"sourceMap": true,
 		"types": [
 			"vite/client",
+			"vitest/globals",
 			"node"
 		],
 		"baseUrl": ".",
