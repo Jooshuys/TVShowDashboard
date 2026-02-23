@@ -15,11 +15,7 @@
 		"resolveJsonModule": true,
 		"verbatimModuleSyntax": false,
 		"sourceMap": true,
-		"types": [
-			"vite/client",
-			"vitest/globals",
-			"node"
-		],
+		"types": ["vite/client"],
 		"baseUrl": ".",
 		"paths": {
 			"@/*": ["src/*"],
@@ -35,12 +31,12 @@
 	"include": [
 		"src/**/*.ts",
 		"src/**/*.vue",
-		"src/**/*.d.ts",
-		"tests/**/*.ts"
+		"src/**/*.d.ts"
 	],
 
 	"exclude": [
 		"node_modules",
-		"dist"
+		"dist",
+		"tests"
 	]
 }

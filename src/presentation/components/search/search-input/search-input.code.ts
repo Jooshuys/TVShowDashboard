@@ -1,6 +1,7 @@
 import { ref, Ref } from "vue";
 import { Emits } from "@/models/emits";
 import { SearchResult } from "@/models/search";
+import { Timeout } from "@/models/timeouts";
 import tvMazeService from "@/services/tv-maze-service";
 
 export default class SearchInputCode {
@@ -10,7 +11,7 @@ export default class SearchInputCode {
 	public searchResults = ref<SearchResult[]>([]);
 	public showDropdown = ref<boolean>(false);
 	public searchWrapper = ref<HTMLDivElement | null>(null);
-	private debounceTimeout: NodeJS.Timeout | number | null = null;
+	private debounceTimeout: Timeout | number | null = null;
 	private boundHandleOutsideClick: (event: MouseEvent) => void;
 
 	constructor() {
@@ -69,7 +70,7 @@ export default class SearchInputCode {
 
 	private debounceSearch(): void {
 		if (this.debounceTimeout) {
-			clearTimeout(this.debounceTimeout as NodeJS.Timeout);
+			clearTimeout(this.debounceTimeout as Timeout);
 		}
 
 		this.debounceTimeout = setTimeout(() => void this.delayedFunction(), 1000);
