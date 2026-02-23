@@ -102,6 +102,8 @@ Component logic is split across multiple files:
 
 ### Unit tests
 
+This project has 100% unit test coverage across statements, functions, branches, and lines.
+
 Unit tests focus on `.code.ts` and other `.ts` files. Component `.ts` and `.vue` files are excluded to focus on core logic. _User interaction flows are better validated through end-to-end testing (e.g., Cypress), which was outside the scope of the MVP._
 
 **Testing style**: Pure black-box testing for functions; external dependencies are mocked. Exceptions include getters and computed properties, which are tested individually but not fully mocked.
