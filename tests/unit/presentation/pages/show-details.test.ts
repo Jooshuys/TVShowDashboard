@@ -107,7 +107,7 @@ describe("show details", () => {
 		expect(code["router"].value).toEqual(mockRouter);
 	});
 
-	it("mounted: should call checkIfShowNeedsToBeRetrieved initially, set up watchers, and call them with correct parameters", () => {
+	it("mounted: when called, set up watchers, and check if shows need to be retrieved when relevant.", () => {
 		const context: any = {
 			checkIfShowNeedsToBeRetrieved: vi.fn(),
 			stopIsLoadingWatcher: null,
