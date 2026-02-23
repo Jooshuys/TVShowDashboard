@@ -2,7 +2,7 @@
 	<div
 		:class="[
 			'PageWrapper',
-			userUsingKeyboard ? 'OptimizedForKeyboardNavigation': ''
+			userUsingKeyboard ? 'OptimisedForKeyboardNavigation': ''
 		]"
 	>
 		<Header />

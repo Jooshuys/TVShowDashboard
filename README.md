@@ -1,13 +1,28 @@
 # TVShowDashboard
 
-Not written yet.
+TVShowDashboard is an application that allows users to browse TV shows by genre, view key details (e.g., rating, network, runtime), and search for shows not visible in the main overview.
+
+## Preview
+
+![Dashboard Screenshot](./docs/screenshot.png)
 
 ## Table of Contents
 
 - [Project setup](#project-setup)
-  - [Running the project](#running-the-project)
+  - [Installing dependencies](#installing-dependencies)
+  - [Running the project locally](#running-the-project-locally)
   - [Compiling and minifying for production](#compiling-and-minifying-for-production)
-- [Application structure](#application-structure)
+  - [Running unit tests](#running-unit-tests)
+- [Tech stack](#tech-stack)
+- [Architecture](#architecture)
+  - [Overview](#overview)
+  - [Unit tests](#unit-tests)
+  - [Styling](#styling)
+  - [Other implementation details](#other-implementation-details)
+    - [Loading Wrappers](#loading-wrappers)
+    - [Dependency on the card width](#dependency-on-the-card-width)
+    - [Notes on accessibility](#notes-on-accessibility)
+- [Folder structure](#folder-structure)
   - [Infrastructure](#infrastructure)
   - [Models](#models)
   - [Presentation](#presentation)
@@ -17,55 +32,142 @@ Not written yet.
 
 ## Project setup
 
-```
+### Installing dependencies
+
+```bash
 npm ci
 ```
 
-### Running the project
+### Running the project locally
 
-```
+```bash
 npm run dev
 ```
 
 ### Compiling and minifying for production
 
-```
+```bash
 npm run build
 ```
 
-## Application structure
+### Running unit tests
 
-Inside the src folder of the application, a few clusters / groups of functionality can be found:
+```bash
+npm run test-u
+```
 
-- Infrastructure
-- Models
-- Presentation
-- Presenters
-- Services
-- Store
+## Tech stack
 
-Below each of these groups is explained.
+- **Front-end framework:** Vue 3
+- **Language:** TypeScript
+- **Build tool:** Vite
+- **Testing framework:** Vitest
+- **CSS Preprocessor:** SCSS
+- **Package manager:** NPM
+  - Node `v22.21.1`
+  - NPM `v10.9.4`
+
+_**Note**: No additional state management or routing libraries (e.g., vue-router, pinia, or vuex) are used. Vue 3’s built-in reactivity is sufficient for handling routing logic and state management in an application of this size. This keeps the bundle lean and improves overall performance._
+
+## Architecture
+
+### Overview
+
+The architecture follows a **Class-based composition API** pattern, combining Vue's Composition API with Object Oriented Programming (OOP).
+
+Component logic is split across multiple files:
+   - `name.vue` – template / markup
+   - `name.code.ts` – core logic
+   - `name.ts` – mediator between logic and template
+   - `name.scss` – styling
+
+#### Advantages:
+- **Encapsulation**: Logic resides in classes, not scattered in `setup()`.
+- **Testability**: Classes can be tested independently.
+- **Reusability**: Classes can be reused across components.
+- **Consistency**: Both component and non-component logic follow the same structure.
+
+### Unit tests
+
+Unit tests focus on `.code.ts` and other `.ts` files. Component `.ts` and `.vue` files are excluded to focus on core logic. _User interaction flows are better validated through end-to-end testing (e.g., Cypress), which was outside the scope of the MVP._
+
+**Testing style**: Pure black-box testing for functions; external dependencies are mocked. Exceptions include getters and computed properties, which are tested individually but not fully mocked.
+
+_This approach is not applied rigidly. In some cases, private functions used by a public method are tested together when it improves readability and provides clearer coverage of the intended use cases._
+
+### Styling
+
+SCSS is **mobile-first**, with styles defined in ascending breakpoints:
+
+```scss
+/* Default CSS */
+
+/* Tablet styles */
+@media (min-width: 768px) {	... }
+
+/* Desktop */
+@media (min-width: 1024px) { ... }
+
+/* Large screens */
+@media (min-width: 1280px) { ... }
+```
+
+### Other implementation details
+
+#### Loading Wrappers
+
+`LoadingWrapper` shows either a **loading skeleton** or content, depending on a loading state.
+
+```vue
+<LoadingWrapper
+	:classes="['ClassOfWrappedElement']"
+	:isLoading="isLoading"
+	tag="span"
+>
+	<div class="ClassOfWrappedElement">
+		The content to be shown when loading completes
+	</div>
+</LoadingWrapper>
+```
+
+- `classes`: Customises the skeleton’s look; typically matches the top-level element class.
+- `isLoading`: Boolean controlling loading state.
+- `tag`: Optional HTML tag; defaults to `div`.
+
+#### Dependency on the card width
+
+The `GenreShowcase` component uses `cardWidthInPixels`. It **must be kept in sync** to align cards correctly. **It must match the actual card width across all screen sizes.**
+
+#### Notes on accessibility
+
+Accessibility was a key focus, with most implementations kept simple and intuitive.
+
+The primary exception is the `OptimisedForKeyboardNavigation` logic in the root `app` component. By default, element `outlines` are disabled to provide a cleaner experience for users navigating via mouse or scroll. Pressing Tab adds the class to `PageWrapper`, restoring `outline: auto` to support keyboard users.
+
+## Folder structure
+
+The `src` folder is organised into functional clusters:
 
 ### Infrastructure
 
-A set of classes that connect the application with some external packages or dependencies.
+Classes connecting the app to external packages or dependencies.
 
 ### Models
 
-A set of classes, interfaces and enums that describe the different entities that the application works with.
+Classes, interfaces, and enums representing entities in the app.
 
 ### Presentation
 
-The visual elements of the application.
+Visual components of the application.
 
 ### Presenters
 
-A set of classes and objects that play a supporting role for the presentation elements by providing data or preparing it in the right format so that it's ready to be used or displayed by any of the components in the presentation layer.
+Classes that prepare data for presentation components.
 
 ### Services
 
-A set of classes that connect the application with the back-end and add a bit of their own functionality to make the best use of it.
+Classes that handle backend communication and add utility logic.
 
 ### Store
 
-All store-related functionality, which provides an accessible, reactive place of front-end storage.
+Centralised reactive front-end storage.
