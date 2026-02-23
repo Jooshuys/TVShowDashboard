@@ -25,6 +25,9 @@ export default defineConfig({
 			reporter: [
 				["text", { maxCols: 200 }]
 			]
-		}
+		},
+		setupFiles: [
+			"tests/unit/additionalMocks.ts"
+		]
 	}
 });
