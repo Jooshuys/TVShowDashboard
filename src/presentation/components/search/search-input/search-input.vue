@@ -23,6 +23,7 @@
 				ref="searchInput"
 				type="text"
 				placeholder="Type to search for shows"
+				autocomplete="off"
 				aria-autocomplete="list"
 				aria-controls="SearchDropdown"
 				:aria-expanded="showDropdown"

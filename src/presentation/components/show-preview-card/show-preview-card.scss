@@ -35,7 +35,7 @@
 	.ShowCardTitle,
 	.ShowCardRating {
 		position: absolute;
-		font-size: 1rem;
+		font-size: 16px;
 		font-weight: bold;
 		background-color: $BrandTeal;
 		color: $White;
@@ -45,7 +45,7 @@
 	}
 
 	.ShowCardTitle {
-		font-size: 1.2rem;
+		font-size: 20px;
 		top: 0;
 		margin: 0;
 		text-align: center;
@@ -92,7 +92,7 @@
 		color: $BrandGreyD;
 
 		& + .ShowCardDetailItem::before {
-			content: '•';
+			content: "•";
 			margin: 0 0.25rem;
 		}
 	}
@@ -122,11 +122,8 @@
 }
 
 @media (min-width: 768px) {
-	.ShowCard {
-
-		.ShowCardImageWrapper {
-			height: 295px;
-		}
+	.ShowCard .ShowCardImageWrapper {
+		height: 295px;
 	}
 }
 

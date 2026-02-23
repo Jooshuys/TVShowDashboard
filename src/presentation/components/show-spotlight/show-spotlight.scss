@@ -23,7 +23,7 @@
 	width: 100%;
 
 	.SpotlightTitle {
-		font-size: 1.5rem;
+		font-size: 24px;
 		margin: 0 0 2rem;
 		background-color: $BrandAmber;
 		padding: 1rem 3rem;
@@ -82,12 +82,9 @@
 		min-height: calc(100vh - 10rem);
 	}
 
-	.SpotlightContentWrapper {
-
-		.SpotlightTitle {
-			display: inline-block;
-			font-size: 3rem;
-		}
+	.SpotlightContentWrapper .SpotlightTitle {
+		display: inline-block;
+		font-size: 48px;
 	}
 
 	.SpotlightSummary {

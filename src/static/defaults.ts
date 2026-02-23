@@ -27,8 +27,8 @@ const DEFAULT_SHOW: TVMazeItem = {
 const DEFAULT_SEARCH_RESULT: SearchResult = {
 	id: 0,
 	genres: [],
-	name: '',
-	premiered: ''
+	name: "",
+	premiered: ""
 };
 
 export {

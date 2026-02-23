@@ -6,7 +6,7 @@ import { TVMazeItem, TVMazeSearchItem } from "@/models/tv-maze";
 import store from "@/store";
 
 class TVMazeService {
-	private apiUrl = 'https://api.tvmaze.com';
+	private apiUrl = "https://api.tvmaze.com";
 
 	private router = computed((): Router => {
 		return store.getters.router();

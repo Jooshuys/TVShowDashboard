@@ -39,7 +39,7 @@ export default class SearchInputCode {
 			return;
 		}
 
-		this.searchInput.value.value = '';
+		this.searchInput.value.value = "";
 		this.setSearchTerm();
 	}
 

@@ -13,7 +13,7 @@ export default class DropdownItemCode {
 	) {}
 
 	public showYear = computed((): string => {
-		return this.show.value.premiered?.substring(0, 4) ?? '';
+		return this.show.value.premiered?.substring(0, 4) ?? "";
 	});
 
 	public isLoading = computed((): boolean => {

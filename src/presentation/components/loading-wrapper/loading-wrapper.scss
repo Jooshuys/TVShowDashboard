@@ -10,7 +10,7 @@
 
 		&::before {
 			display: block;
-			content: '';
+			content: "";
 			height: 100%;
 			width: auto;
 			@include ShimmerAnimation();
@@ -76,48 +76,42 @@
 
 @media (min-width: 768px) {
 	
-	.LoadingWrapper {
+	.LoadingWrapper .LoadingContent {
 
-		.LoadingContent {
+		&.SpotlightImage {
+			height: 40vh;
+		}
 
-			&.SpotlightImage {
-				height: 40vh;
-			}
+		&.SpotlightTitle {
+			height: 10vh;
+			width: 30rem;
+			padding: 1rem 3rem;
+			margin-bottom: 2rem;
+		}
 
-			&.SpotlightTitle {
-				height: 10vh;
-				width: 30rem;
-				padding: 1rem 3rem;
-				margin-bottom: 2rem;
-			}
+		&.SpotlightSummary {
+			width: 60vw;
+			padding: 1rem;
+			margin-top: 0;
+		}
 
-			&.SpotlightSummary {
-				width: 60vw;
-				padding: 1rem;
-				margin-top: 0;
-			}
-
-			&.SpotlightContentDetails {
-				width: 30vw;
-				padding: 1rem;
-			}
+		&.SpotlightContentDetails {
+			width: 30vw;
+			padding: 1rem;
 		}
 	}
 }
 
 @media (min-width: 1024px) {
 	
-	.LoadingWrapper {
+	.LoadingWrapper .LoadingContent {
 
-		.LoadingContent {
+		&.SpotlightSummary {
+			width: 70vw;
+		}
 
-			&.SpotlightSummary {
-				width: 70vw;
-			}
-
-			&.SpotlightContentDetails {
-				width: 25vw;
-			}
+		&.SpotlightContentDetails {
+			width: 25vw;
 		}
 	}
 }

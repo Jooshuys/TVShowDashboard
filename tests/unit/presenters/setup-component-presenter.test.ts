@@ -120,7 +120,7 @@ describe("setup component presenter", () => {
 
 		setupComponentPresenter.setupComponent(obj);
 
-		// Should only attempt to defineProperty for 'bar', not 'foo'.
+		// Should only attempt to defineProperty for "bar", not "foo".
 		const calls = spy.mock.calls.map(call => call[1]);
 		expect(calls).not.toContain("foo");
 		expect(calls).toContain("bar");
