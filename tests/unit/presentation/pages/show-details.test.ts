@@ -138,6 +138,7 @@ describe("show details", () => {
 		expect(context.checkIfShowNeedsToBeRetrieved).toHaveBeenCalledTimes(2);
 		routerCallback({ props: { id: "123" } }, { props: { id: "356" } });
 		expect(context.checkIfShowNeedsToBeRetrieved).toHaveBeenCalledTimes(3);
+		expect(context.checkIfShowNeedsToBeRetrieved).toHaveBeenNthCalledWith(3, true);
 	});
 
 	test.each([
@@ -160,12 +161,14 @@ describe("show details", () => {
 	});
 
 	test.each([
-		[true, false, false, 0],
-		[false, true, false, 0],
-		[false, false, true, 0],
-		[false, false, false, 1]
+		[undefined, true, false, false, 0],
+		[false, false, true, false, 0],
+		[false, true, false, false, 0],
+		[false, false, false, true, 0],
+		[true, false, false, true, 1],
+		[false, false, false, false, 1]
 	])("checkIfShowNeedsToBeRetrieved: when context use case %#, give expected boolean.",
-		async (showAvailable, isLoading, isLoadingFailure, callCount) => {
+		async (ignoreFailure, showAvailable, isLoading, isLoadingFailure, callCount) => {
 		const showForCurrentRoute = { id: 1, name: "Test Show" };
 		const context = {
 			showForCurrentRoute: { value: showAvailable ? showForCurrentRoute : null },
@@ -174,7 +177,7 @@ describe("show details", () => {
 			router: { value: { currentRoute: Routes.SHOW_DETAILS, props: { id: 123 } } }
 		};
 
-		await code.checkIfShowNeedsToBeRetrieved.bind(context)();
+		await code.checkIfShowNeedsToBeRetrieved.bind(context)(ignoreFailure);
 
 		expect(mocksTvMazeService.retrieveShowById).toHaveBeenCalledTimes(callCount);
 		if (!callCount) {

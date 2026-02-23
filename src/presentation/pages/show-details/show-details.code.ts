@@ -50,7 +50,7 @@ export default class ShowDetailsCode {
 					return;
 				}
 
-				void this.checkIfShowNeedsToBeRetrieved();
+				void this.checkIfShowNeedsToBeRetrieved(true);
 			}
 		);
 	}
@@ -67,8 +67,12 @@ export default class ShowDetailsCode {
 		}
 	}
 
-	public async checkIfShowNeedsToBeRetrieved(): Promise<void> {
-		if (this.showForCurrentRoute.value || this.isLoading.value || this.isLoadingFailure.value) {
+	public async checkIfShowNeedsToBeRetrieved(retrieveDespiteLoadingFailure = false): Promise<void> {
+		if (this.isLoadingFailure.value && !retrieveDespiteLoadingFailure) {
+			return;
+		}
+
+		if (this.showForCurrentRoute.value || this.isLoading.value) {
 			return;
 		}
 

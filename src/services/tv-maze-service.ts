@@ -76,7 +76,7 @@ class TVMazeService {
 			store.mutations.updateLoadingStatusOfType(
 				LoadingTypes.GENRE_CLUSTER,
 				LoadingStatuses.ERROR,
-				"Something went wrong while loading this show. Please refresh the page."
+				"Something went wrong while loading this show. Please refresh the page or view another show."
 			);
 			console.error(error);
 		}

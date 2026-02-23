@@ -206,7 +206,7 @@ describe("TV Maze service", () => {
 			2,
 			LoadingTypes.GENRE_CLUSTER,
 			LoadingStatuses.ERROR,
-			"Something went wrong while loading this show. Please refresh the page."
+			"Something went wrong while loading this show. Please refresh the page or view another show."
 		);
 		expect(mockedFetch.mock.calls.length).toEqual(1);
 		expect(mockedFetch.mock.calls[0][0]).toEqual("https://api.tvmaze.com/shows/87053");
@@ -230,7 +230,7 @@ describe("TV Maze service", () => {
 			2,
 			LoadingTypes.GENRE_CLUSTER,
 			LoadingStatuses.ERROR,
-			"Something went wrong while loading this show. Please refresh the page."
+			"Something went wrong while loading this show. Please refresh the page or view another show."
 		);
 		expect(mockedFetch.mock.calls.length).toEqual(1);
 		expect(mockedFetch.mock.calls[0][0]).toEqual("https://api.tvmaze.com/shows/87053");
