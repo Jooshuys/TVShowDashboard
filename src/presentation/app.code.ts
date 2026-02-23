@@ -1,4 +1,4 @@
-import { Component, computed, nextTick, watch, WatchStopHandle } from "vue";
+import { Component, computed, nextTick, ref, watch, WatchStopHandle } from "vue";
 import { RoutesCluster, Routes, Router } from "@/models/router";
 import Overview from "@/presentation/pages/overview/overview.vue";
 import ShowDetails from "@/presentation/pages/show-details/show-details.vue";
@@ -7,11 +7,19 @@ import tvMazeService from "@/services/tv-maze-service";
 import store from "@/store";
 
 export default class AppCode {
+	public userUsingKeyboard = ref(false);
+	private boundKeydownListener: (event: KeyboardEvent) => void;
+	private boundMousedownListener: () => void; 
 	private stopRouterWatcher: WatchStopHandle | null = null;
 	private routes: RoutesCluster = {
 		[Routes.OVERVIEW]: Overview,
 		[Routes.SHOW_DETAILS]: ShowDetails
 	};
+
+	constructor() {
+		this.boundKeydownListener = this.onKeydown.bind(this);
+		this.boundMousedownListener = this.onMouseDown.bind(this);
+	}
 
 	public CurrentComponent = computed((): Component => {
 		return this.routes[this.router.value.current];
@@ -22,6 +30,8 @@ export default class AppCode {
 	});
 
 	public mounted(): void {
+		this.updateEventListeners(true);
+
 		routePresenter.prepareForRoutingActions();
 
 		void tvMazeService.retrieveShowsForGenreCluster(0);
@@ -33,12 +43,40 @@ export default class AppCode {
 	}
 
 	public unmounted(): void {
+		this.updateEventListeners(false);
+		
 		if (!this.stopRouterWatcher) {
 			return;
 		}
 
 		this.stopRouterWatcher();
 		this.stopRouterWatcher = null;
+	}
+
+	private setUserUsingKeyboardAs(isUsingKeyboard: boolean): void {
+		this.userUsingKeyboard.value = isUsingKeyboard;
+	}
+
+	private onKeydown(event: KeyboardEvent): void {
+		if (event.key !== "Tab") {
+			return;
+		}
+
+		this.setUserUsingKeyboardAs(true);
+	}
+
+	private onMouseDown(): void {
+		this.setUserUsingKeyboardAs(false);
+	}
+
+	private updateEventListeners(actionIsAdding: boolean): void {
+		if (actionIsAdding) {
+			window.addEventListener("keydown", this.boundKeydownListener);
+			window.addEventListener("mousedown", this.boundMousedownListener);
+		} else {
+			window.removeEventListener("keydown", this.boundKeydownListener);
+			window.removeEventListener("mousedown", this.boundMousedownListener);
+		}
 	}
 
 	private async focusMainAfterNavigation(newValue: Router, oldValue: Router): Promise<void> {

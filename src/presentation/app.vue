@@ -1,5 +1,10 @@
 <template>
-	<div class="PageWrapper">
+	<div
+		:class="[
+			'PageWrapper',
+			userUsingKeyboard ? 'OptimizedForKeyboardNavigation': ''
+		]"
+	>
 		<Header />
 		<main
 			id="MainContent"

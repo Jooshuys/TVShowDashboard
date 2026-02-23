@@ -103,11 +103,14 @@ describe("app", () => {
 		const context: any = {
 			stopRouterWatcher: null,
 			router: { value: { current: Routes.OVERVIEW } },
-			focusMainAfterNavigation: vi.fn()
+			focusMainAfterNavigation: vi.fn(),
+			updateEventListeners: vi.fn()
 		};
 
 		code.mounted.bind(context)();
 
+		expect(context.updateEventListeners).toHaveBeenCalledTimes(1);
+		expect(context.updateEventListeners).toHaveBeenCalledWith(true);
 		expect(mocksRoutePresenter.prepareForRoutingActions).toHaveBeenCalledTimes(1);
 		expect(mocksTvMazeService.retrieveShowsForGenreCluster).toHaveBeenCalledTimes(1);
 		expect(mocksTvMazeService.retrieveShowsForGenreCluster).toHaveBeenCalledWith(0);
@@ -129,10 +132,78 @@ describe("app", () => {
 		[false, 0]
 	])("unmounted: when watcher use case %#, trigger expected behaviour.", (watcherAvailable, callCount) => {
 		const stopRouterWatcher = vi.fn();
-		const context = { stopRouterWatcher: watcherAvailable ? stopRouterWatcher : null };
+		const context = {
+			stopRouterWatcher: watcherAvailable ? stopRouterWatcher : null,
+			updateEventListeners: vi.fn()
+		};
 		code.unmounted.bind(context)();
+		expect(context.updateEventListeners).toHaveBeenCalledTimes(1);
+		expect(context.updateEventListeners).toHaveBeenCalledWith(false);
 		expect(stopRouterWatcher).toHaveBeenCalledTimes(callCount);
 		expect(context.stopRouterWatcher).toBeNull();
+	});
+
+	it("setUserUsingKeyboardAs: when method called, update userUsingKeyboard ref value", () => {
+		const context = {
+			userUsingKeyboard: { value: false }
+		};
+		code["setUserUsingKeyboardAs"].bind(context)(true);
+		expect(context.userUsingKeyboard.value).toEqual(true);
+		code["setUserUsingKeyboardAs"].bind(context)(false);
+		expect(context.userUsingKeyboard.value).toEqual(false);
+	});
+
+	test.each([
+		[{ key: "Tab" }, 1],
+		[{ key: "Enter" }, 0]
+	])("onKeydown: when keydown event use case %#, give expected result.", (event, callCount) => {
+		const context = {
+			setUserUsingKeyboardAs: vi.fn()
+		};
+		code["onKeydown"].bind(context)(event as any);
+		expect(context.setUserUsingKeyboardAs).toHaveBeenCalledTimes(callCount);
+
+		if (!callCount) {
+			return;
+		}
+
+		expect(context.setUserUsingKeyboardAs).toHaveBeenCalledWith(true);
+	});
+
+	it("onMouseDown: when method called, set userUsingKeyboard as false.", () => {
+		const context = {
+			setUserUsingKeyboardAs: vi.fn()
+		};
+		code["onMouseDown"].bind(context)();
+		expect(context.setUserUsingKeyboardAs).toHaveBeenCalledTimes(1);
+		expect(context.setUserUsingKeyboardAs).toHaveBeenCalledWith(false);
+	});
+
+	test.each([
+		[true, 2, 0],
+		[false, 0, 2]
+	])("updateEventListeners: when called with value %#, update event listeners as expected.", (value, addCount, removeCount) => {
+		const context = {
+			boundKeydownListener: vi.fn(),
+			boundMousedownListener: vi.fn()
+		};
+		const addSpy = vi.spyOn(window, "addEventListener");
+		const removeSpy = vi.spyOn(window, "removeEventListener");
+
+		code["updateEventListeners"].bind(context)(value);
+
+		expect(addSpy).toHaveBeenCalledTimes(addCount);
+		expect(removeSpy).toHaveBeenCalledTimes(removeCount);
+		
+		if (addCount > 0) {
+			expect(addSpy).toHaveBeenNthCalledWith(1, "keydown", context.boundKeydownListener);
+			expect(addSpy).toHaveBeenNthCalledWith(2, "mousedown", context.boundMousedownListener);
+		}
+
+		if (removeCount > 0) {
+			expect(removeSpy).toHaveBeenNthCalledWith(1, "keydown", context.boundKeydownListener);
+			expect(removeSpy).toHaveBeenNthCalledWith(2, "mousedown", context.boundMousedownListener);
+		}
 	});
 
 	it("focusMainAfterNavigation: when route unchanged, bail out early.", async () => {

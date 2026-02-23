@@ -11,6 +11,15 @@
 	flex: 1;
 }
 
+:focus {
+	outline: none;
+}
+
+// Ensure that outlines are visible when tabbing through elements, but not when using the mouse.
+.OptimizedForKeyboardNavigation :focus {
+	outline: auto;
+}
+
 @media (min-width: 768px) {
 	.PageWrapper {
 		min-height: 100vh;
