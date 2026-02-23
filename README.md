@@ -13,6 +13,7 @@ TVShowDashboard is an application that allows users to browse TV shows by genre,
   - [Running the project locally](#running-the-project-locally)
   - [Compiling and minifying for production](#compiling-and-minifying-for-production)
   - [Running unit tests](#running-unit-tests)
+  - [Deploying](#deploying)
 - [Tech stack](#tech-stack)
 - [Architecture](#architecture)
   - [Overview](#overview)
@@ -29,6 +30,8 @@ TVShowDashboard is an application that allows users to browse TV shows by genre,
   - [Presenters](#presenters)
   - [Services](#services)
   - [Store](#store)
+- [Known issues](#known-issues)
+  - [Behaviour on GitHub Pages](#behaviour-on-github-pages)
 
 ## Project setup
 
@@ -55,6 +58,16 @@ npm run build
 ```bash
 npm run test-u
 ```
+
+### Deploying
+
+```bash
+npm run deploy
+```
+
+This deploys the application to Github Pages.
+
+_Note: Please also check out the Github Pages related notes under [Known issues](#known-issue)._
 
 ## Tech stack
 
@@ -171,3 +184,16 @@ Classes that handle backend communication and add utility logic.
 ### Store
 
 Centralised reactive front-end storage.
+
+## Known issues
+
+### Behaviour on GitHub Pages
+
+When the application is deployed to GitHub Pages, a few limitations are present due to the static file hosting environment:
+
+- **Subpath handling:** The app doesn’t fully handle the repository subpath (`/TVShowDashboard/`). Navigating between pages can strip the subpath, causing page refreshes to break the view.
+- **Direct page access:** Opening a detail page (e.g., `show-details`) in a new tab results in a 404, because GitHub Pages serves only static files and cannot route requests to the Vue application.
+
+**Workaround:** The application functions correctly if the user stays within a single tab and navigates without refreshing the page.
+
+For the full experience, it’s recommended to run the **application locally** (see [Running the project locally](#running-the-project-locally)).
