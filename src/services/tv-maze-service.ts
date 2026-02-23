@@ -67,7 +67,7 @@ class TVMazeService {
 			const response = await fetch(`${this.apiUrl}/shows/${id}`);
 			const show = await response.json() as TVMazeItem | undefined;
 			if (!show) {
-				return;
+				throw new Error(`Show with id ${id} not found.`);
 			}
 
 			store.mutations.addShowsToGenreCluster([show]);
