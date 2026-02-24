@@ -2,7 +2,6 @@ import { Component, computed, nextTick, ref, watch, WatchStopHandle } from "vue"
 import { RoutesCluster, Routes, Router } from "@/models/router";
 import Overview from "@/presentation/pages/overview/overview.vue";
 import ShowDetails from "@/presentation/pages/show-details/show-details.vue";
-import routePresenter from "@/presenters/route-presenter";
 import tvMazeService from "@/services/tv-maze-service";
 import store from "@/store";
 
