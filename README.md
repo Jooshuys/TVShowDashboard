@@ -191,11 +191,14 @@ Centralised reactive front-end storage.
 
 ### Behaviour on GitHub Pages
 
-When the application is deployed to GitHub Pages, a few limitations are present due to the static file hosting environment:
+This version of the application (Github branch `version-for-gh-pages`) works slightly different than the one on the `master` branch. It serves as a workaround to ensure the application functions correctly on GitHub Pages.
 
-- **Subpath handling:** The app doesn’t fully handle the repository subpath (`/TVShowDashboard/`). Navigating between pages can strip the subpath, causing page refreshes to break the view.
-- **Direct page access:** Opening a detail page (e.g., `show-details`) in a new tab results in a 404, because GitHub Pages serves only static files and cannot route requests to the Vue application.
+#### Key Differences
 
-**Workaround:** The application functions correctly if the user stays within a single tab and navigates without refreshing the page.
-
-For the full experience, it’s recommended to run the **application locally** (see [Running the project locally](#running-the-project-locally)).
+- All `<a>` elements have been replaced with `<button>` elements.
+  - The href attribute has been renamed to data-href to avoid confusion about its purpose.
+  - Some styling changes were applied in line with the `<a>` to `<button>` change
+- The store’s `navigateToRoute` mutation no longer updates the browser `history`.
+- The `RoutePresenter.handleNavigationItemClick` method has been simplified and no longer handles special click behavior (e.g., opening in a new tab or middle-click).
+- All browser URL manipulation has been removed.
+  - Internal routing is still handled by the store router, but it no longer affects the browser’s address bar.
