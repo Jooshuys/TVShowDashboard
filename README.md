@@ -191,11 +191,9 @@ Centralised reactive front-end storage.
 
 ### Behaviour on GitHub Pages
 
-When the application is deployed to GitHub Pages, a few limitations are present due to the static file hosting environment:
+Initially, when deploying the application to GitHub Pages, a few issues arose due to the static file hosting environment:
 
-- **Subpath handling:** The app doesn’t fully handle the repository subpath (`/TVShowDashboard/`). Navigating between pages can strip the subpath, causing page refreshes to break the view.
-- **Direct page access:** Opening a detail page (e.g., `show-details`) in a new tab results in a 404, because GitHub Pages serves only static files and cannot route requests to the Vue application.
+- **Subpath handling:** The app didn’t fully handle the repository subpath (`/TVShowDashboard/`). Navigating between pages would strip the subpath, causing page refreshes to break the view.
+- **Direct page access:** Opening a detail page (e.g., `show-details`) in a new tab would result in a 404, because GitHub Pages serves only static files and cannot route requests to the Vue application.
 
-**Workaround:** The application functions correctly if the user stays within a single tab and navigates without refreshing the page.
-
-For the full experience, it’s recommended to run the **application locally** (see [Running the project locally](#running-the-project-locally)).
+**Workaround:** At the moment, the version that's deployed to Github Pages is the one from the `version-for-gh-pages` branch, which resolves these issues with some caveats. For more insights, please check out the `README` of that branch.
