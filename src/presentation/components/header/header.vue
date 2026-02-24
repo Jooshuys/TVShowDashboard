@@ -1,7 +1,7 @@
 <template>
 	<header class="TopHeader">
-		<a
-			href="/overview"
+		<button
+			data-href="/overview"
 			class="HomeButton"
 			aria-label="Go to homepage"
 			@click="handleNavigationItemClick"
@@ -10,7 +10,7 @@
 				class="fa-solid fa-clapperboard"
 				aria-hidden="true"
 			></i>
-		</a>
+		</button>
 		<SearchInput />
 	</header>
 </template>

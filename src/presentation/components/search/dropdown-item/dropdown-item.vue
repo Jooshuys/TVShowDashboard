@@ -3,8 +3,8 @@
 		:classes="['DropdownItem']"
 		:isLoading="isLoading"
 	>
-		<a
-			:href="`/show-details/${show.id}`"
+		<button
+			:data-href="`/show-details/${show.id}`"
 			class="DropdownItem"
 			role="option"
 			@click="handleNavigationItemClick"
@@ -13,7 +13,7 @@
 			<span v-if="showYear">
 				({{ showYear }})
 			</span>
-		</a>
+		</button>
 	</LoadingWrapper>
 </template>
 

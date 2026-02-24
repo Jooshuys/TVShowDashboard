@@ -151,15 +151,12 @@ describe("mutations", () => {
 		["overview/5", { current: Routes.OVERVIEW, props: { id: 5 } }],
 		["show-details/10", { current: Routes.SHOW_DETAILS, props: { id: 10 } }]
 	])("navigateToRoute: when route use case %#, give expected result.", (url, expected) => {
-		vi.spyOn(window.history, "pushState").mockImplementation(() => {});
 		mutations.navigateToRoute(url);
 		expect(state.router).toEqual(expected);
 		expect(mocksRoutePresenter.retrieveRouteNameFromUrl).toHaveBeenCalledTimes(1);
 		expect(mocksRoutePresenter.retrieveRouteNameFromUrl).toHaveBeenCalledWith(url);
 		expect(mocksRoutePresenter.retrieveIdFromUrl).toHaveBeenCalledTimes(1);
 		expect(mocksRoutePresenter.retrieveIdFromUrl).toHaveBeenCalledWith(url);
-		expect(window.history.pushState).toHaveBeenCalledTimes(1);
-		expect(window.history.pushState).toHaveBeenCalledWith({}, "", url);
 	});
 
 	test.each([

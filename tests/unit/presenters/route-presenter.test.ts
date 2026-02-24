@@ -26,13 +26,8 @@ describe("Route Presenter", () => {
 	});
 
 	test.each([
-		[{ metaKey: true, currentTarget: { getAttribute: vi.fn(() => "/overview") }, preventDefault: vi.fn() }, 0],
-		[{ ctrlKey: true, currentTarget: { getAttribute: vi.fn(() => "/overview") }, preventDefault: vi.fn() }, 0],
-		[{ shiftKey: true, currentTarget: { getAttribute: vi.fn(() => "/overview") }, preventDefault: vi.fn() }, 0],
-		[{ altKey: true, currentTarget: { getAttribute: vi.fn(() => "/overview") }, preventDefault: vi.fn() }, 0],
-		[{ button: 1, currentTarget: { getAttribute: vi.fn(() => "/overview") }, preventDefault: vi.fn() }, 0],
-		[{ button: 0, currentTarget: null, preventDefault: vi.fn() }, 0],
-		[{ button: 0, currentTarget: { getAttribute: vi.fn(() => "/overview") }, preventDefault: vi.fn() }, 1],
+		[{ currentTarget: null, preventDefault: vi.fn() }, 0],
+		[{ currentTarget: { getAttribute: vi.fn(() => "/overview") }, preventDefault: vi.fn() }, 1],
 	])("handleNavigationItemClick: when event use case %#, give expected result.", (event, callCount) => {
 		routePresenter["handleNavigationItemClick"](event as any);
 		expect(event.preventDefault).toHaveBeenCalledTimes(callCount);
@@ -43,22 +38,6 @@ describe("Route Presenter", () => {
 		}
 
 		expect(mocksStore.navigateToRoute).toHaveBeenNthCalledWith(1, "/overview");
-	});
-
-	it("prepareForRoutingActions: when called, give expected result.", () => {
-		const url = "https://test.com/overview";
-		vi.spyOn(global as any, "window", "get").mockReturnValue({
-			location: {
-				href: url
-			}
-		});
-		const context = {
-			respondToExternalRouteChanges: vi.fn()
-		};
-		routePresenter.prepareForRoutingActions.bind(context)();
-		expect(mocksStore.navigateToRoute).toHaveBeenCalledTimes(1);
-		expect(mocksStore.navigateToRoute).toHaveBeenNthCalledWith(1, url);
-		expect(context.respondToExternalRouteChanges).toHaveBeenCalledTimes(1);
 	});
 
 	test.each([
@@ -103,31 +82,5 @@ describe("Route Presenter", () => {
 		routePresenter["githubApplicationName"] = githubApplicationName;
 		const result = routePresenter.retrieveRelevantUrlPart(url);
 		expect(result).toEqual(expectedRelevantUrlPart);
-	});
-
-	it("respondToExternalRouteChanges: when called, give expected result.", () => {
-		const url = "https://test.com/overview";
-		vi.spyOn(global as any, "window", "get").mockReturnValue({
-			location: {
-				href: url
-			}
-		});
-		Object.defineProperty(window, "addEventListener", {
-			writable: true,
-			value: vi.fn((change: string, listener: () => void) => {})
-		});
-		routePresenter["respondToExternalRouteChanges"]();
-		const addEventListener = window.addEventListener as any;
-		expect(addEventListener).toHaveBeenCalledTimes(1);
-		expect(addEventListener).toHaveBeenCalledWith(
-			"hashchange",
-			expect.any(Function)
-		);
-		expect(mocksStore.navigateToRoute).toHaveBeenCalledTimes(0);
-		
-		const callback = addEventListener.mock.calls[0][1];
-		callback();
-		expect(mocksStore.navigateToRoute).toHaveBeenCalledTimes(1);
-		expect(mocksStore.navigateToRoute).toHaveBeenNthCalledWith(1, url);
 	});
 });

@@ -36,15 +36,6 @@ vi.mock("vue", async () => {
 	};
 });
 
-const mocksRoutePresenter: any = vi.hoisted(() => ({
-  	prepareForRoutingActions: vi.fn()
-}));
-
-vi.mock("@/presenters/route-presenter", () => ({
-	__esModule: true,
-	default: mocksRoutePresenter
-}));
-
 const mocksTvMazeService: any = vi.hoisted(() => ({
   retrieveShowsForGenreCluster: vi.fn()
 }));
@@ -111,7 +102,6 @@ describe("app", () => {
 
 		expect(context.updateEventListeners).toHaveBeenCalledTimes(1);
 		expect(context.updateEventListeners).toHaveBeenCalledWith(true);
-		expect(mocksRoutePresenter.prepareForRoutingActions).toHaveBeenCalledTimes(1);
 		expect(mocksTvMazeService.retrieveShowsForGenreCluster).toHaveBeenCalledTimes(1);
 		expect(mocksTvMazeService.retrieveShowsForGenreCluster).toHaveBeenCalledWith(0);
 		expect(mocksVue.watch).toHaveBeenCalledTimes(1);

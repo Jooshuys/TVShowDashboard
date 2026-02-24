@@ -32,8 +32,6 @@ export default class AppCode {
 	public mounted(): void {
 		this.updateEventListeners(true);
 
-		routePresenter.prepareForRoutingActions();
-
 		void tvMazeService.retrieveShowsForGenreCluster(0);
 		
 		this.stopRouterWatcher = watch(

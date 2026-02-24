@@ -41,7 +41,6 @@ const mutations: Mutations = {
 				id: id ? id : 0
 			}
 		};
-		history.pushState({}, "", url);
 	},
 	updateLoadingStatusOfType: (type, status, errorMessage = "") => {
 		if (!state.loadingCluster[type]) {

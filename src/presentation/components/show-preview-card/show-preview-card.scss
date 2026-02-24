@@ -3,6 +3,9 @@
 .ShowCardLink {
 	color: inherit;
 	text-decoration: none;
+	background: transparent;
+	border: none;
+	cursor: pointer;
 
 	&:last-of-type .ShowCard {
 		margin-right: 0;

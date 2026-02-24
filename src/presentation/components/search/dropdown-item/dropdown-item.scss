@@ -6,6 +6,10 @@
 	color: $White;
 	text-decoration: none;
 	width: 100%;
+	text-align: left;
+	background: transparent;
+	border: none;
+	cursor: pointer;
 
 	&:hover {
 		color: $BrandAmber;

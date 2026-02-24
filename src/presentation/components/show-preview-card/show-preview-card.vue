@@ -4,8 +4,8 @@
 		:isLoading="isLoading"
 		tag="span"
 	>
-		<a
-			:href="`/show-details/${show.id}`"
+		<button
+			:data-href="`/show-details/${show.id}`"
 			class="ShowCardLink"
 			:aria-label="cardSummary"
 			tabindex="-1"
@@ -73,7 +73,7 @@
 					></p>
 				</div>
 			</article>
-		</a>
+		</button>
 	</LoadingWrapper>
 </template>
 

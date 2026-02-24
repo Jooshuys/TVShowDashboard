@@ -9,16 +9,6 @@ class RoutePresenter {
 	}
 
 	public handleNavigationItemClick(event: PointerEvent): void {
-		if (
-			event.metaKey || // Cmd click.
-			event.ctrlKey || // Ctrl click.
-			event.shiftKey ||
-			event.altKey ||
-			event.button !== 0 // Not left click.
-		) {
-			return;
-		}
-
 		const target = event.currentTarget as HTMLAnchorElement | null
 		if (!target) {
 			return;
@@ -26,13 +16,8 @@ class RoutePresenter {
 		
 		event.preventDefault();
 
-		const path = target.getAttribute("href") as string;
+		const path = target.getAttribute("data-href") as string;
 		store.mutations.navigateToRoute(path);
-	}
-
-	public prepareForRoutingActions(): void {
-		store.mutations.navigateToRoute(window.location.href);
-		this.respondToExternalRouteChanges();
 	}
 
 	public retrieveIdFromUrl(url: string): number {
@@ -78,13 +63,6 @@ class RoutePresenter {
 		}
 
 		return relevantUrlPart;
-	}
-
-	private respondToExternalRouteChanges(): void {
-		window.addEventListener(
-			"hashchange",
-			() => store.mutations.navigateToRoute(window.location.href)
-		);
 	}
 }
 
