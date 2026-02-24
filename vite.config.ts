@@ -2,8 +2,8 @@ import { defineConfig } from "vitest/config";
 import vue from "@vitejs/plugin-vue";
 import path from "path";
 
-export default defineConfig({
-	base: '/TVShowDashboard/',
+export default defineConfig(({ command }) => ({
+  	base: command === 'build' ? '/TVShowDashboard/' : '/',
 	plugins: [vue()],
 	resolve: {
 		alias: {
@@ -31,4 +31,4 @@ export default defineConfig({
 			"tests/unit/additionalMocks.ts"
 		]
 	}
-});
+}));
